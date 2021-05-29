@@ -8,11 +8,11 @@ using namespace System;
 using namespace System::Windows::Forms;
 
 
-
 ref class LoginForm
 {
 
 public:
+	int x = 10;
 	String^ liveUserName;
 	String^ livePassword;
 	String^ isUserMatched = "false";
