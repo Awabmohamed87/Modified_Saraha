@@ -1,6 +1,7 @@
 ﻿  LoginForm.cpp
   MyForm.cpp
   RegisterForm.cpp
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
   Generating Code...
   LoginForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  loginForm.vcxproj -> F:\login_and_register_form\x64\Debug\loginForm.exe
+  loginForm.vcxproj -> F:\Aobz\Icy Tower GEN33\Modified_Saraha\x64\Debug\loginForm.exe

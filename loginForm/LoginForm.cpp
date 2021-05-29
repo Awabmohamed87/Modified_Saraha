@@ -8,7 +8,7 @@ using namespace std;
 using namespace System;
 using namespace System::Windows::Forms;
 
-ifstream scoreboardin("users.txt");
+ifstream UsersReader("users.txt");
 
 
 
@@ -25,16 +25,16 @@ LoginForm::LoginForm() {
     tempUser.username = s1;
     tempUser.password = s2;
     tempUser.ID = s3;
-    while (scoreboardin) {
-        scoreboardin >> s1;
-        scoreboardin >> s2;
-        scoreboardin >> s3;
+    while (UsersReader) {
+        UsersReader >> s1;
+        UsersReader >> s2;
+        UsersReader >> s3;
         if (s1 == "-1")
             break;
         Users.push_back(tempUser);
     }
     Users.pop_back();
-    scoreboardin.close();
+    UsersReader.close();
 }
 void LoginForm::loginCheck() {
 
