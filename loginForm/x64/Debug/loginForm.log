@@ -1,0 +1,6 @@
+﻿  LoginForm.cpp
+  MyForm.cpp
+  RegisterForm.cpp
+  Generating Code...
+  LoginForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  loginForm.vcxproj -> F:\login_and_register_form\x64\Debug\loginForm.exe
