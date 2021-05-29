@@ -41,7 +41,6 @@ RegisterForm::RegisterForm() {
         tempUser.password = s2;
         tempUser.ID = s3;
         Userss.push_back(tempUser);
-        cout << s1 << " " << s2 << " " << s3 << endl;
 
     }
     Userss.pop_back();

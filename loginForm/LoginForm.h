@@ -12,10 +12,10 @@ ref class LoginForm
 {
 
 public:
-	int x = 10;
+
 	String^ liveUserName;
 	String^ livePassword;
-	String^ isUserMatched = "false";
+	int isUserMatched = 0;
 	LoginForm::LoginForm();
 	void loginCheck();
 	void setLiveUserName(String^ name);
