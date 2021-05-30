@@ -13,3 +13,6 @@ C:\Users\amgad\source\repos\Awabmohamed87\Modified_Saraha\loginForm\x64\Debug\lo
 C:\Users\amgad\Documents\GitHub\Modified_Saraha\loginForm\x64\Debug\loginForm.vcxproj.AssemblyReference.cache
 C:\Users\amgad\Documents\GitHub\Modified_Saraha\loginForm\x64\Debug\loginForm.MyForm.resources
 C:\Users\amgad\Documents\GitHub\Modified_Saraha\loginForm\x64\Debug\loginForm.vcxproj.GenerateResource.cache
+C:\Users\Adnan Dalain\Documents\modif-saraha\GitHub\Modified_Saraha\loginForm\x64\Debug\loginForm.vcxprojAssemblyReference.cache
+C:\Users\Adnan Dalain\Documents\modif-saraha\GitHub\Modified_Saraha\loginForm\x64\Debug\loginForm.MyForm.resources
+C:\Users\Adnan Dalain\Documents\modif-saraha\GitHub\Modified_Saraha\loginForm\x64\Debug\loginForm.vcxproj.GenerateResource.cache

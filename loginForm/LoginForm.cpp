@@ -28,7 +28,7 @@ static std::string toStandardString(System::String^ string)
 
 LoginForm::LoginForm() {
 
-    string s1, s2, s3;
+    string s1, s2, s3,s4;
     while (UsersReader) {
         UsersReader >> s1;
         UsersReader >> s2;
