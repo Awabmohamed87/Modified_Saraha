@@ -2,7 +2,7 @@
 #include<iostream>
 #include<fstream>
 #include<vector>
-
+#include"Users.h"
 using namespace std;
 using System::Runtime::InteropServices::Marshal;
 
@@ -20,14 +20,12 @@ ofstream usersFileUpdate("users.txt", ios::app);
 ifstream usersFile("users.txt");
 
 
-struct User {
-    string username, password, ID;
-}liveUser;
+Users liveUser;
 
-vector<User>Userss;
+vector<Users>Userss;
 
 RegisterForm::RegisterForm() {
-    User tempUser;
+    Users tempUser;
 
     string s1, s2, s3;
     while (usersFile) {
@@ -37,7 +35,7 @@ RegisterForm::RegisterForm() {
         if (s1 == "-1")
             break;
 
-        tempUser.username = s1;
+        tempUser.Username = s1;
         tempUser.password = s2;
         tempUser.ID = s3;
         Userss.push_back(tempUser);
@@ -71,11 +69,11 @@ void RegisterForm::setLivePasswordConfirm(String^ PasswordConfirm)
 
 void RegisterForm::RegisterCheck()
 {
-    vector<User>::iterator it;
+    vector<Users>::iterator it;
     it = Userss.begin();
     while (it != Userss.end()) {
         string str1, str2, str3;
-        str1 = it->username;
+        str1 = it->Username;
         str2 = it->password;
         str3 = it->ID;
         if (liveUserName == gcnew String(str1.c_str())) {
@@ -92,7 +90,7 @@ void RegisterForm::RegisterCheck()
     }
     if (registerState == 0) {
         liveUser.ID = toStandardString(liveID);
-        liveUser.username = toStandardString(liveUserName);
+        liveUser.Username = toStandardString(liveUserName);
         liveUser.password = toStandardString(livePassword);
         Userss.push_back(liveUser);
         updateFile();
@@ -110,7 +108,7 @@ int RegisterForm::getRegisterState()
 }
 
 void RegisterForm::updateFile() {
-    usersFileUpdate << Userss[Userss.size() - 1].username;
+    usersFileUpdate << Userss[Userss.size() - 1].Username;
     usersFileUpdate << " ";
     usersFileUpdate << Userss[Userss.size() - 1].password;
     usersFileUpdate << " ";

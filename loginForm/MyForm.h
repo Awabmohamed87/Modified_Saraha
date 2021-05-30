@@ -86,18 +86,21 @@ namespace loginForm {
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::Button^ button6;
 	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::Panel^ HomePanel;
-	private: System::Windows::Forms::Panel^ leftSidePanel;
 
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::Panel^ topBarPanel;
 
-	private: System::Windows::Forms::Label^ IDLabel;
-	private: System::Windows::Forms::Button^ FavouriteButton;
-	private: System::Windows::Forms::Button^ button8;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::ToolTip^ favouriteHint;
+
+
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::Panel^ panel3;
+	private: System::Windows::Forms::Panel^ panel11;
+	private: System::Windows::Forms::Panel^ panel10;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -129,7 +132,6 @@ namespace loginForm {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -141,15 +143,6 @@ namespace loginForm {
 			this->LoginButton = (gcnew System::Windows::Forms::Button());
 			this->RegisterButton = (gcnew System::Windows::Forms::Button());
 			this->panelReg = (gcnew System::Windows::Forms::Panel());
-			this->HomePanel = (gcnew System::Windows::Forms::Panel());
-			this->leftSidePanel = (gcnew System::Windows::Forms::Panel());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->topBarPanel = (gcnew System::Windows::Forms::Panel());
-			this->button8 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->FavouriteButton = (gcnew System::Windows::Forms::Button());
-			this->IDLabel = (gcnew System::Windows::Forms::Label());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
@@ -173,16 +166,16 @@ namespace loginForm {
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->panel9 = (gcnew System::Windows::Forms::Panel());
-			this->favouriteHint = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->panel11 = (gcnew System::Windows::Forms::Panel());
+			this->panel10 = (gcnew System::Windows::Forms::Panel());
 			this->panelReg->SuspendLayout();
-			this->HomePanel->SuspendLayout();
-			this->leftSidePanel->SuspendLayout();
-			this->topBarPanel->SuspendLayout();
 			this->LoginPanel->SuspendLayout();
 			this->panel8->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->panel9->SuspendLayout();
+			this->panel3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -193,7 +186,7 @@ namespace loginForm {
 			this->label1->ForeColor = System::Drawing::Color::DimGray;
 			this->label1->Location = System::Drawing::Point(34, 69);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(156, 72);
+			this->label1->Size = System::Drawing::Size(124, 58);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Login";
 			this->label1->UseMnemonic = false;
@@ -207,7 +200,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label2->Location = System::Drawing::Point(39, 218);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(143, 38);
+			this->label2->Size = System::Drawing::Size(111, 30);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Username";
 			this->label2->UseMnemonic = false;
@@ -220,7 +213,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label3->Location = System::Drawing::Point(39, 310);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(134, 38);
+			this->label3->Size = System::Drawing::Size(104, 30);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Passward";
 			this->label3->UseMnemonic = false;
@@ -235,7 +228,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->UserNameBox->Location = System::Drawing::Point(44, 251);
 			this->UserNameBox->Name = L"UserNameBox";
-			this->UserNameBox->Size = System::Drawing::Size(288, 37);
+			this->UserNameBox->Size = System::Drawing::Size(288, 30);
 			this->UserNameBox->TabIndex = 3;
 			this->UserNameBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
@@ -270,7 +263,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->PasswordBox->Location = System::Drawing::Point(40, 343);
 			this->PasswordBox->Name = L"PasswordBox";
-			this->PasswordBox->Size = System::Drawing::Size(288, 37);
+			this->PasswordBox->Size = System::Drawing::Size(288, 30);
 			this->PasswordBox->TabIndex = 5;
 			this->PasswordBox->UseSystemPasswordChar = true;
 			this->PasswordBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
@@ -316,7 +309,6 @@ namespace loginForm {
 			// 
 			this->panelReg->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelReg.BackgroundImage")));
 			this->panelReg->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->panelReg->Controls->Add(this->HomePanel);
 			this->panelReg->Controls->Add(this->button3);
 			this->panelReg->Controls->Add(this->button4);
 			this->panelReg->Controls->Add(this->panel7);
@@ -338,115 +330,6 @@ namespace loginForm {
 			this->panelReg->Size = System::Drawing::Size(835, 561);
 			this->panelReg->TabIndex = 9;
 			this->panelReg->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::panel3_Paint);
-			// 
-			// HomePanel
-			// 
-			this->HomePanel->BackColor = System::Drawing::Color::White;
-			this->HomePanel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"HomePanel.BackgroundImage")));
-			this->HomePanel->Controls->Add(this->leftSidePanel);
-			this->HomePanel->Controls->Add(this->topBarPanel);
-			this->HomePanel->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->HomePanel->Location = System::Drawing::Point(0, 0);
-			this->HomePanel->Name = L"HomePanel";
-			this->HomePanel->Size = System::Drawing::Size(835, 561);
-			this->HomePanel->TabIndex = 19;
-			this->favouriteHint->SetToolTip(this->HomePanel, L"hfnftyuj");
-			this->HomePanel->Visible = false;
-			// 
-			// leftSidePanel
-			// 
-			this->leftSidePanel->AccessibleRole = System::Windows::Forms::AccessibleRole::MenuBar;
-			this->leftSidePanel->Anchor = System::Windows::Forms::AnchorStyles::Left;
-			this->leftSidePanel->Controls->Add(this->textBox1);
-			this->leftSidePanel->Location = System::Drawing::Point(3, 69);
-			this->leftSidePanel->Name = L"leftSidePanel";
-			this->leftSidePanel->Size = System::Drawing::Size(187, 489);
-			this->leftSidePanel->TabIndex = 1;
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(9, 14);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(115, 40);
-			this->textBox1->TabIndex = 0;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged_1);
-			// 
-			// topBarPanel
-			// 
-			this->topBarPanel->AccessibleRole = System::Windows::Forms::AccessibleRole::TitleBar;
-			this->topBarPanel->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->topBarPanel->BackColor = System::Drawing::Color::White;
-			this->topBarPanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->topBarPanel->Controls->Add(this->button8);
-			this->topBarPanel->Controls->Add(this->button2);
-			this->topBarPanel->Controls->Add(this->button1);
-			this->topBarPanel->Controls->Add(this->FavouriteButton);
-			this->topBarPanel->Controls->Add(this->IDLabel);
-			this->topBarPanel->Location = System::Drawing::Point(0, 0);
-			this->topBarPanel->Name = L"topBarPanel";
-			this->topBarPanel->Size = System::Drawing::Size(835, 66);
-			this->topBarPanel->TabIndex = 0;
-			// 
-			// button8
-			// 
-			this->button8->BackColor = System::Drawing::Color::Transparent;
-			this->button8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button8.BackgroundImage")));
-			this->button8->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->button8->ImageAlign = System::Drawing::ContentAlignment::TopLeft;
-			this->button8->Location = System::Drawing::Point(751, 23);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(37, 35);
-			this->button8->TabIndex = 4;
-			this->button8->UseVisualStyleBackColor = false;
-			// 
-			// button2
-			// 
-			this->button2->BackColor = System::Drawing::Color::Transparent;
-			this->button2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.BackgroundImage")));
-			this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->button2->ImageAlign = System::Drawing::ContentAlignment::TopLeft;
-			this->button2->Location = System::Drawing::Point(708, 22);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(37, 35);
-			this->button2->TabIndex = 3;
-			this->button2->UseVisualStyleBackColor = false;
-			// 
-			// button1
-			// 
-			this->button1->BackColor = System::Drawing::Color::Transparent;
-			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
-			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->button1->ImageAlign = System::Drawing::ContentAlignment::TopLeft;
-			this->button1->Location = System::Drawing::Point(665, 22);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(37, 35);
-			this->button1->TabIndex = 2;
-			this->button1->UseVisualStyleBackColor = false;
-			// 
-			// FavouriteButton
-			// 
-			this->FavouriteButton->BackColor = System::Drawing::Color::Transparent;
-			this->FavouriteButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"FavouriteButton.BackgroundImage")));
-			this->FavouriteButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->FavouriteButton->ImageAlign = System::Drawing::ContentAlignment::TopLeft;
-			this->FavouriteButton->Location = System::Drawing::Point(622, 23);
-			this->FavouriteButton->Name = L"FavouriteButton";
-			this->FavouriteButton->Size = System::Drawing::Size(37, 34);
-			this->FavouriteButton->TabIndex = 1;
-			this->FavouriteButton->UseVisualStyleBackColor = false;
-			this->FavouriteButton->MouseLeave += gcnew System::EventHandler(this, &MyForm::FavouriteButton_MouseLeave);
-			this->FavouriteButton->MouseHover += gcnew System::EventHandler(this, &MyForm::FavouriteButton_MouseHover);
-			// 
-			// IDLabel
-			// 
-			this->IDLabel->AutoSize = true;
-			this->IDLabel->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->IDLabel->Location = System::Drawing::Point(16, 3);
-			this->IDLabel->Name = L"IDLabel";
-			this->IDLabel->Size = System::Drawing::Size(75, 55);
-			this->IDLabel->TabIndex = 0;
-			this->IDLabel->Text = L"ID";
 			// 
 			// button3
 			// 
@@ -505,7 +388,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(188)), static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->passwordConfirmBox->Location = System::Drawing::Point(44, 392);
 			this->passwordConfirmBox->Name = L"passwordConfirmBox";
-			this->passwordConfirmBox->Size = System::Drawing::Size(288, 37);
+			this->passwordConfirmBox->Size = System::Drawing::Size(288, 30);
 			this->passwordConfirmBox->TabIndex = 15;
 			this->passwordConfirmBox->UseSystemPasswordChar = true;
 			// 
@@ -517,7 +400,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label8->Location = System::Drawing::Point(39, 359);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(310, 38);
+			this->label8->Size = System::Drawing::Size(240, 30);
 			this->label8->TabIndex = 14;
 			this->label8->Text = L"Passowrd Confirmation";
 			this->label8->UseMnemonic = false;
@@ -543,7 +426,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(188)), static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->RegisterPasswordBox->Location = System::Drawing::Point(44, 321);
 			this->RegisterPasswordBox->Name = L"RegisterPasswordBox";
-			this->RegisterPasswordBox->Size = System::Drawing::Size(288, 37);
+			this->RegisterPasswordBox->Size = System::Drawing::Size(288, 30);
 			this->RegisterPasswordBox->TabIndex = 12;
 			this->RegisterPasswordBox->UseSystemPasswordChar = true;
 			// 
@@ -555,7 +438,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label7->Location = System::Drawing::Point(39, 288);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(133, 38);
+			this->label7->Size = System::Drawing::Size(103, 30);
 			this->label7->TabIndex = 11;
 			this->label7->Text = L"Password";
 			this->label7->UseMnemonic = false;
@@ -581,7 +464,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(188)), static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->ResgisterUserNameBox->Location = System::Drawing::Point(44, 247);
 			this->ResgisterUserNameBox->Name = L"ResgisterUserNameBox";
-			this->ResgisterUserNameBox->Size = System::Drawing::Size(288, 37);
+			this->ResgisterUserNameBox->Size = System::Drawing::Size(288, 30);
 			this->ResgisterUserNameBox->TabIndex = 9;
 			// 
 			// label6
@@ -592,7 +475,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label6->Location = System::Drawing::Point(39, 214);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(143, 38);
+			this->label6->Size = System::Drawing::Size(111, 30);
 			this->label6->TabIndex = 8;
 			this->label6->Text = L"Username";
 			this->label6->UseMnemonic = false;
@@ -618,7 +501,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->IDBox->Location = System::Drawing::Point(40, 173);
 			this->IDBox->Name = L"IDBox";
-			this->IDBox->Size = System::Drawing::Size(288, 37);
+			this->IDBox->Size = System::Drawing::Size(288, 30);
 			this->IDBox->TabIndex = 6;
 			// 
 			// label5
@@ -629,7 +512,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label5->Location = System::Drawing::Point(39, 140);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(51, 38);
+			this->label5->Size = System::Drawing::Size(39, 30);
 			this->label5->TabIndex = 5;
 			this->label5->Text = L"ID";
 			this->label5->UseMnemonic = false;
@@ -643,7 +526,7 @@ namespace loginForm {
 			this->label4->ForeColor = System::Drawing::Color::DimGray;
 			this->label4->Location = System::Drawing::Point(34, 69);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(239, 72);
+			this->label4->Size = System::Drawing::Size(189, 58);
 			this->label4->TabIndex = 1;
 			this->label4->Text = L"Register";
 			this->label4->UseMnemonic = false;
@@ -752,13 +635,42 @@ namespace loginForm {
 			// 
 			// panel9
 			// 
-			this->panel9->Controls->Add(this->panelReg);
 			this->panel9->Controls->Add(this->LoginPanel);
+			this->panel9->Controls->Add(this->panelReg);
+			this->panel9->Controls->Add(this->panel3);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel9->Location = System::Drawing::Point(0, 39);
 			this->panel9->Name = L"panel9";
 			this->panel9->Size = System::Drawing::Size(835, 561);
 			this->panel9->TabIndex = 12;
+			// 
+			// panel3
+			// 
+			this->panel3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel3.BackgroundImage")));
+			this->panel3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->panel3->Controls->Add(this->panel11);
+			this->panel3->Controls->Add(this->panel10);
+			this->panel3->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel3->Location = System::Drawing::Point(0, 0);
+			this->panel3->Name = L"panel3";
+			this->panel3->Size = System::Drawing::Size(835, 561);
+			this->panel3->TabIndex = 11;
+			// 
+			// panel11
+			// 
+			this->panel11->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panel11->Location = System::Drawing::Point(200, 0);
+			this->panel11->Name = L"panel11";
+			this->panel11->Size = System::Drawing::Size(635, 100);
+			this->panel11->TabIndex = 1;
+			// 
+			// panel10
+			// 
+			this->panel10->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel10->Location = System::Drawing::Point(0, 0);
+			this->panel10->Name = L"panel10";
+			this->panel10->Size = System::Drawing::Size(200, 561);
+			this->panel10->TabIndex = 0;
 			// 
 			// MyForm
 			// 
@@ -778,17 +690,13 @@ namespace loginForm {
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->panelReg->ResumeLayout(false);
 			this->panelReg->PerformLayout();
-			this->HomePanel->ResumeLayout(false);
-			this->leftSidePanel->ResumeLayout(false);
-			this->leftSidePanel->PerformLayout();
-			this->topBarPanel->ResumeLayout(false);
-			this->topBarPanel->PerformLayout();
 			this->LoginPanel->ResumeLayout(false);
 			this->LoginPanel->PerformLayout();
 			this->panel8->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->panel9->ResumeLayout(false);
+			this->panel3->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -806,24 +714,15 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	loginForm.setLiveUserName(UserNameBox->Text);
 	loginForm.setLivePassword(PasswordBox->Text);
 	loginForm.loginCheck();
-	panelReg->Hide();
-	LoginPanel->Hide();
-	HomePanel->Visible = true;
-	HomePanel->BringToFront();
-	HomePanel->Show();
-	
 
-	/*if (loginForm.isUserMatched == 1) {
-		HomePanel->Show();
-		leftSidePanel->Show();
-		topBarPanel->Show();
+	if (loginForm.isUserMatched == 1) {
+		panel3->Show();
 		panelReg->Hide();
 		LoginPanel->Hide();
-		
 	}
 	else {
 		MessageBox::Show("user name or password is incorrect", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-	}*/
+	}
 
 }
 private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -880,6 +779,8 @@ private: System::Void FavouriteButton_MouseHover(System::Object^ sender, System:
 }
 private: System::Void FavouriteButton_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 	
+}
+private: System::Void HomePanel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 };
 }

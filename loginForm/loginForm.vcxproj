@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{AAAC22F5-CE00-45C4-9ABD-2EEF1483490E}</ProjectGuid>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>loginForm</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -123,6 +123,7 @@
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="RegisterForm.cpp" />
+    <ClCompile Include="Users.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoginForm.h" />
@@ -130,6 +131,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="RegisterForm.h" />
+    <ClInclude Include="Users.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">

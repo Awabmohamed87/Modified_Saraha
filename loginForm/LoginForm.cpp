@@ -2,20 +2,19 @@
 #include<iostream>
 #include<fstream>
 #include<vector>
+#include<algorithm>
 #include <utility>
-
+#include "Users.h"
+#include "RegisterForm.h"
 using namespace std;
 using namespace System;
 using namespace System::Windows::Forms;
 using System::Runtime::InteropServices::Marshal;
 
 ifstream UsersReader("users.txt");
+Users tempUser;
 
-struct User {
-    string username, password, ID;
-}tempUser;
-
-vector<User>Users;
+vector<Users>user;
 
 static std::string toStandardString(System::String^ string)
 {
@@ -30,27 +29,26 @@ static std::string toStandardString(System::String^ string)
 LoginForm::LoginForm() {
 
     string s1, s2, s3;
-
     while (UsersReader) {
         UsersReader >> s1;
         UsersReader >> s2;
         UsersReader >> s3;
         if (s1 == "-1")
             break;
-        tempUser.username = s1;
+        tempUser.Username = s1;
         tempUser.password = s2;
         tempUser.ID = s3;
-        Users.push_back(tempUser);
+        user.push_back(tempUser);
     }
-    Users.pop_back();
+    user.pop_back();
     UsersReader.close();
 }
 void LoginForm::loginCheck() {
     isUserMatched = 0;
-    for (int i = 0; i < Users.size();i++) {
-        cout << Users[i].username << " " << Users[i].password << endl;
-        if (toStandardString(liveUserName) == Users[i].username) {
-            if (toStandardString(livePassword) == Users[i].password) {
+    for (int i = 0; i < user.size();i++) {
+        cout << user[i].Username << " " << user[i].password << endl;
+        if (toStandardString(liveUserName) == user[i].Username) {
+            if (toStandardString(livePassword) == user[i].password) {
                 isUserMatched = 1;
                 break;
             }
