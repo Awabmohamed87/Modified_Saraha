@@ -116,6 +116,11 @@ void RegisterForm::updateFile() {
     usersFileUpdate << "\n";
 }
 
+Users RegisterForm::getLatestUser()
+{
+    return liveUser;
+}
+
 RegisterForm::~RegisterForm()
 {
     usersFile.close();

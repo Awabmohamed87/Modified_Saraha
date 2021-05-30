@@ -186,7 +186,7 @@ namespace loginForm {
 			this->label1->ForeColor = System::Drawing::Color::DimGray;
 			this->label1->Location = System::Drawing::Point(34, 69);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(124, 58);
+			this->label1->Size = System::Drawing::Size(156, 72);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Login";
 			this->label1->UseMnemonic = false;
@@ -200,7 +200,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label2->Location = System::Drawing::Point(39, 218);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(111, 30);
+			this->label2->Size = System::Drawing::Size(143, 38);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Username";
 			this->label2->UseMnemonic = false;
@@ -213,7 +213,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label3->Location = System::Drawing::Point(39, 310);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(104, 30);
+			this->label3->Size = System::Drawing::Size(134, 38);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Passward";
 			this->label3->UseMnemonic = false;
@@ -228,7 +228,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->UserNameBox->Location = System::Drawing::Point(44, 251);
 			this->UserNameBox->Name = L"UserNameBox";
-			this->UserNameBox->Size = System::Drawing::Size(288, 30);
+			this->UserNameBox->Size = System::Drawing::Size(288, 37);
 			this->UserNameBox->TabIndex = 3;
 			this->UserNameBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
@@ -263,7 +263,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->PasswordBox->Location = System::Drawing::Point(40, 343);
 			this->PasswordBox->Name = L"PasswordBox";
-			this->PasswordBox->Size = System::Drawing::Size(288, 30);
+			this->PasswordBox->Size = System::Drawing::Size(288, 37);
 			this->PasswordBox->TabIndex = 5;
 			this->PasswordBox->UseSystemPasswordChar = true;
 			this->PasswordBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
@@ -388,7 +388,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(188)), static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->passwordConfirmBox->Location = System::Drawing::Point(44, 392);
 			this->passwordConfirmBox->Name = L"passwordConfirmBox";
-			this->passwordConfirmBox->Size = System::Drawing::Size(288, 30);
+			this->passwordConfirmBox->Size = System::Drawing::Size(288, 37);
 			this->passwordConfirmBox->TabIndex = 15;
 			this->passwordConfirmBox->UseSystemPasswordChar = true;
 			// 
@@ -400,7 +400,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label8->Location = System::Drawing::Point(39, 359);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(240, 30);
+			this->label8->Size = System::Drawing::Size(310, 38);
 			this->label8->TabIndex = 14;
 			this->label8->Text = L"Passowrd Confirmation";
 			this->label8->UseMnemonic = false;
@@ -426,7 +426,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(188)), static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->RegisterPasswordBox->Location = System::Drawing::Point(44, 321);
 			this->RegisterPasswordBox->Name = L"RegisterPasswordBox";
-			this->RegisterPasswordBox->Size = System::Drawing::Size(288, 30);
+			this->RegisterPasswordBox->Size = System::Drawing::Size(288, 37);
 			this->RegisterPasswordBox->TabIndex = 12;
 			this->RegisterPasswordBox->UseSystemPasswordChar = true;
 			// 
@@ -438,7 +438,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label7->Location = System::Drawing::Point(39, 288);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(103, 30);
+			this->label7->Size = System::Drawing::Size(133, 38);
 			this->label7->TabIndex = 11;
 			this->label7->Text = L"Password";
 			this->label7->UseMnemonic = false;
@@ -464,7 +464,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(188)), static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->ResgisterUserNameBox->Location = System::Drawing::Point(44, 247);
 			this->ResgisterUserNameBox->Name = L"ResgisterUserNameBox";
-			this->ResgisterUserNameBox->Size = System::Drawing::Size(288, 30);
+			this->ResgisterUserNameBox->Size = System::Drawing::Size(288, 37);
 			this->ResgisterUserNameBox->TabIndex = 9;
 			// 
 			// label6
@@ -475,7 +475,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label6->Location = System::Drawing::Point(39, 214);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(111, 30);
+			this->label6->Size = System::Drawing::Size(143, 38);
 			this->label6->TabIndex = 8;
 			this->label6->Text = L"Username";
 			this->label6->UseMnemonic = false;
@@ -501,7 +501,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->IDBox->Location = System::Drawing::Point(40, 173);
 			this->IDBox->Name = L"IDBox";
-			this->IDBox->Size = System::Drawing::Size(288, 30);
+			this->IDBox->Size = System::Drawing::Size(288, 37);
 			this->IDBox->TabIndex = 6;
 			// 
 			// label5
@@ -512,7 +512,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(167)));
 			this->label5->Location = System::Drawing::Point(39, 140);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(39, 30);
+			this->label5->Size = System::Drawing::Size(51, 38);
 			this->label5->TabIndex = 5;
 			this->label5->Text = L"ID";
 			this->label5->UseMnemonic = false;
@@ -526,7 +526,7 @@ namespace loginForm {
 			this->label4->ForeColor = System::Drawing::Color::DimGray;
 			this->label4->Location = System::Drawing::Point(34, 69);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(189, 58);
+			this->label4->Size = System::Drawing::Size(239, 72);
 			this->label4->TabIndex = 1;
 			this->label4->Text = L"Register";
 			this->label4->UseMnemonic = false;
@@ -742,6 +742,9 @@ private: System::Void panel3_Paint(System::Object^ sender, System::Windows::Form
 			MessageBox::Show(" user name already exists", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		else if (registerForm.getRegisterState() == 2)
 			MessageBox::Show(" passwords doesn't match", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		else if (registerForm.getRegisterState() == 0) {
+			loginForm.updateUsers(registerForm.getLatestUser());
+		}
 	}
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	panelReg->Hide();

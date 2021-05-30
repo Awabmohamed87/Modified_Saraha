@@ -1,7 +1,7 @@
 #pragma once
 #include<iostream>
 #include<fstream>
-
+#include"Users.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -30,6 +30,6 @@ public:
 	void setRegisterState(int registerState);
 	int getRegisterState();
 	void updateFile();
-
+	Users getLatestUser();
 };
 

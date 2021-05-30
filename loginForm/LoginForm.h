@@ -3,6 +3,7 @@
 #include<fstream>
 #include<vector>
 #include<string>
+#include"Users.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -20,5 +21,6 @@ public:
 	void loginCheck();
 	void setLiveUserName(String^ name);
 	void setLivePassword(String^ pass);
+	void updateUsers(Users User);
 };
 

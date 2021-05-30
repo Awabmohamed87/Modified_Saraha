@@ -66,3 +66,8 @@ void LoginForm::setLivePassword(String^ pass) {
     livePassword = pass;
    
 }
+
+void LoginForm::updateUsers(Users User)
+{
+    user.push_back(User);
+}
