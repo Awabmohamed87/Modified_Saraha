@@ -108,12 +108,14 @@ int RegisterForm::getRegisterState()
 }
 
 void RegisterForm::updateFile() {
+    std::cout << "im here" << endl;
     usersFileUpdate << Userss[Userss.size() - 1].Username;
     usersFileUpdate << " ";
     usersFileUpdate << Userss[Userss.size() - 1].password;
     usersFileUpdate << " ";
     usersFileUpdate << Userss[Userss.size() - 1].ID;
     usersFileUpdate << "\n";
+    std::cout << "im here" << endl;
 }
 
 Users RegisterForm::getLatestUser()
