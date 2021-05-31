@@ -12,7 +12,7 @@ using namespace System::Windows::Forms;
 using System::Runtime::InteropServices::Marshal;
 
 ifstream UsersReader("users.txt");
-Users tempUser;
+Users tempUser, LiveUser;
 
 vector<Users>user;
 
@@ -50,6 +50,9 @@ void LoginForm::loginCheck() {
         if (toStandardString(liveUserName) == user[i].Username) {
             if (toStandardString(livePassword) == user[i].password) {
                 isUserMatched = 1;
+                LiveUser.Username = user[i].Username;
+                LiveUser.password = user[i].password;
+                LiveUser.ID = user[i].ID;
                 break;
             }
         }
@@ -70,4 +73,9 @@ void LoginForm::setLivePassword(String^ pass) {
 void LoginForm::updateUsers(Users User)
 {
     user.push_back(User);
+}
+
+Users LoginForm::getLiveUser()
+{
+    return LiveUser;
 }

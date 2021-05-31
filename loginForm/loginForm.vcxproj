@@ -120,13 +120,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HomeForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
+    <ClCompile Include="Message.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="RegisterForm.cpp" />
     <ClCompile Include="Users.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HomeForm.h" />
     <ClInclude Include="LoginForm.h" />
+    <ClInclude Include="Message.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

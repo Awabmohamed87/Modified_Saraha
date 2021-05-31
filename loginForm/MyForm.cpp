@@ -1,5 +1,6 @@
 #include "MyForm.h"
 #include "LoginForm.h"
+#include"HomeForm.h"
 #include <iostream>
 using namespace System;
 using namespace System::Windows::Forms;
@@ -8,7 +9,7 @@ void main() {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	loginForm::MyForm form;
-	
+	HomeForm homeForm;
 	Application::Run(% form);
 	
 }

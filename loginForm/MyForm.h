@@ -2,6 +2,7 @@
 #include <iostream>
 #include "LoginForm.h"
 #include "RegisterForm.h"
+#include"HomeForm.h"
 
 using namespace std;
 
@@ -112,7 +113,8 @@ namespace loginForm {
 	private: System::Windows::Forms::Panel^ contact_Panel;
 	private: System::Windows::Forms::Panel^ homeContainer_Panel;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ IDLabel;
+
 	private: System::Windows::Forms::Button^ button1;
 
 
@@ -190,7 +192,7 @@ namespace loginForm {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->IDLabel = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->search_TextBox = (gcnew System::Windows::Forms::TextBox());
@@ -431,9 +433,9 @@ namespace loginForm {
 			// 
 			// panel9
 			// 
+			this->panel9->Controls->Add(this->LoginPanel);
 			this->panel9->Controls->Add(this->Home_Panel);
 			this->panel9->Controls->Add(this->register_Panel);
-			this->panel9->Controls->Add(this->LoginPanel);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel9->Location = System::Drawing::Point(0, 0);
 			this->panel9->Name = L"panel9";
@@ -449,7 +451,7 @@ namespace loginForm {
 			this->Home_Panel->Controls->Add(this->label4);
 			this->Home_Panel->Controls->Add(this->label5);
 			this->Home_Panel->Controls->Add(this->label3);
-			this->Home_Panel->Controls->Add(this->label6);
+			this->Home_Panel->Controls->Add(this->IDLabel);
 			this->Home_Panel->Controls->Add(this->label2);
 			this->Home_Panel->Controls->Add(this->label1);
 			this->Home_Panel->Controls->Add(this->search_TextBox);
@@ -523,19 +525,19 @@ namespace loginForm {
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Sent Messages";
 			// 
-			// label6
+			// IDLabel
 			// 
-			this->label6->AutoSize = true;
-			this->label6->BackColor = System::Drawing::Color::Transparent;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Asap SemiBold", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->IDLabel->AutoSize = true;
+			this->IDLabel->BackColor = System::Drawing::Color::Transparent;
+			this->IDLabel->Font = (gcnew System::Drawing::Font(L"Asap SemiBold", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			this->IDLabel->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label6->Location = System::Drawing::Point(131, 56);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(29, 35);
-			this->label6->TabIndex = 4;
-			this->label6->Text = L"2";
+			this->IDLabel->Location = System::Drawing::Point(74, 61);
+			this->IDLabel->Name = L"IDLabel";
+			this->IDLabel->Size = System::Drawing::Size(29, 35);
+			this->IDLabel->TabIndex = 4;
+			this->IDLabel->Text = L"2";
 			// 
 			// label2
 			// 
@@ -720,6 +722,7 @@ namespace loginForm {
 	}
 		   LoginForm loginForm;
 		   RegisterForm registerForm;
+		   HomeForm homeForm;
 		   
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	loginForm.setLiveUserName(UserNameBox->Text);
@@ -727,6 +730,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	loginForm.loginCheck();
 
 	if (loginForm.isUserMatched == 1) {
+		homeForm.setLiveUser(loginForm.getLiveUser());
+		IDLabel->Text = gcnew String(homeForm.getLiveUserID().c_str());
 		Home_Panel->Show();
 		register_Panel->Hide();
 		LoginPanel->Hide();
@@ -755,6 +760,7 @@ private: System::Void panel3_Paint(System::Object^ sender, System::Windows::Form
 			MessageBox::Show(" passwords doesn't match", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		else if (registerForm.getRegisterState() == 0) {
 			loginForm.updateUsers(registerForm.getLatestUser());
+
 		}
 	}
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {

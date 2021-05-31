@@ -22,5 +22,6 @@ public:
 	void setLiveUserName(String^ name);
 	void setLivePassword(String^ pass);
 	void updateUsers(Users User);
+	Users getLiveUser();
 };
 
