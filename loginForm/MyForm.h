@@ -114,7 +114,7 @@ namespace loginForm {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+
 
 
 
@@ -198,7 +198,6 @@ namespace loginForm {
 			this->favorites_Button = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SentM_Button = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->receivedM_Button = (gcnew System::Windows::Forms::Button());
 			this->logout_Button = (gcnew System::Windows::Forms::Button());
 			this->add_Button = (gcnew System::Windows::Forms::Button());
@@ -432,9 +431,9 @@ namespace loginForm {
 			// 
 			// panel9
 			// 
+			this->panel9->Controls->Add(this->Home_Panel);
 			this->panel9->Controls->Add(this->register_Panel);
 			this->panel9->Controls->Add(this->LoginPanel);
-			this->panel9->Controls->Add(this->Home_Panel);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel9->Location = System::Drawing::Point(0, 0);
 			this->panel9->Name = L"panel9";
@@ -458,7 +457,6 @@ namespace loginForm {
 			this->Home_Panel->Controls->Add(this->favorites_Button);
 			this->Home_Panel->Controls->Add(this->button1);
 			this->Home_Panel->Controls->Add(this->SentM_Button);
-			this->Home_Panel->Controls->Add(this->button2);
 			this->Home_Panel->Controls->Add(this->receivedM_Button);
 			this->Home_Panel->Controls->Add(this->logout_Button);
 			this->Home_Panel->Controls->Add(this->add_Button);
@@ -533,7 +531,7 @@ namespace loginForm {
 				static_cast<System::Byte>(0)));
 			this->label6->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label6->Location = System::Drawing::Point(196, 59);
+			this->label6->Location = System::Drawing::Point(131, 56);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(29, 35);
 			this->label6->TabIndex = 4;
@@ -633,20 +631,6 @@ namespace loginForm {
 			this->SentM_Button->TabIndex = 2;
 			this->SentM_Button->UseVisualStyleBackColor = false;
 			this->SentM_Button->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_2);
-			// 
-			// button2
-			// 
-			this->button2->BackColor = System::Drawing::Color::Transparent;
-			this->button2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.BackgroundImage")));
-			this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->button2->FlatAppearance->BorderSize = 0;
-			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Location = System::Drawing::Point(162, 45);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(97, 64);
-			this->button2->TabIndex = 2;
-			this->button2->UseVisualStyleBackColor = false;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_2);
 			// 
 			// receivedM_Button
 			// 
