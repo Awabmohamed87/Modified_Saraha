@@ -220,7 +220,7 @@ namespace loginForm {
 			this->UserNameBox->ForeColor = System::Drawing::Color::White;
 			this->UserNameBox->Location = System::Drawing::Point(199, 181);
 			this->UserNameBox->Name = L"UserNameBox";
-			this->UserNameBox->Size = System::Drawing::Size(192, 25);
+			this->UserNameBox->Size = System::Drawing::Size(192, 31);
 			this->UserNameBox->TabIndex = 3;
 			this->UserNameBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
@@ -234,7 +234,7 @@ namespace loginForm {
 			this->PasswordBox->ForeColor = System::Drawing::Color::White;
 			this->PasswordBox->Location = System::Drawing::Point(200, 221);
 			this->PasswordBox->Name = L"PasswordBox";
-			this->PasswordBox->Size = System::Drawing::Size(191, 25);
+			this->PasswordBox->Size = System::Drawing::Size(191, 31);
 			this->PasswordBox->TabIndex = 5;
 			this->PasswordBox->UseSystemPasswordChar = true;
 			this->PasswordBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
@@ -358,7 +358,7 @@ namespace loginForm {
 			this->passwordConfirmBox->ForeColor = System::Drawing::Color::White;
 			this->passwordConfirmBox->Location = System::Drawing::Point(244, 275);
 			this->passwordConfirmBox->Name = L"passwordConfirmBox";
-			this->passwordConfirmBox->Size = System::Drawing::Size(191, 22);
+			this->passwordConfirmBox->Size = System::Drawing::Size(191, 28);
 			this->passwordConfirmBox->TabIndex = 15;
 			this->passwordConfirmBox->UseSystemPasswordChar = true;
 			// 
@@ -372,7 +372,7 @@ namespace loginForm {
 			this->RegisterPasswordBox->ForeColor = System::Drawing::Color::White;
 			this->RegisterPasswordBox->Location = System::Drawing::Point(244, 236);
 			this->RegisterPasswordBox->Name = L"RegisterPasswordBox";
-			this->RegisterPasswordBox->Size = System::Drawing::Size(184, 22);
+			this->RegisterPasswordBox->Size = System::Drawing::Size(184, 28);
 			this->RegisterPasswordBox->TabIndex = 12;
 			this->RegisterPasswordBox->UseSystemPasswordChar = true;
 			// 
@@ -386,7 +386,7 @@ namespace loginForm {
 			this->ResgisterUserNameBox->ForeColor = System::Drawing::Color::White;
 			this->ResgisterUserNameBox->Location = System::Drawing::Point(245, 198);
 			this->ResgisterUserNameBox->Name = L"ResgisterUserNameBox";
-			this->ResgisterUserNameBox->Size = System::Drawing::Size(190, 22);
+			this->ResgisterUserNameBox->Size = System::Drawing::Size(190, 28);
 			this->ResgisterUserNameBox->TabIndex = 9;
 			// 
 			// IDBox
@@ -399,7 +399,7 @@ namespace loginForm {
 			this->IDBox->ForeColor = System::Drawing::Color::White;
 			this->IDBox->Location = System::Drawing::Point(246, 159);
 			this->IDBox->Name = L"IDBox";
-			this->IDBox->Size = System::Drawing::Size(182, 22);
+			this->IDBox->Size = System::Drawing::Size(182, 28);
 			this->IDBox->TabIndex = 6;
 			// 
 			// LoginPanel
@@ -433,9 +433,9 @@ namespace loginForm {
 			// 
 			// panel9
 			// 
-			this->panel9->Controls->Add(this->LoginPanel);
 			this->panel9->Controls->Add(this->Home_Panel);
 			this->panel9->Controls->Add(this->register_Panel);
+			this->panel9->Controls->Add(this->LoginPanel);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel9->Location = System::Drawing::Point(0, 0);
 			this->panel9->Name = L"panel9";
@@ -493,7 +493,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label4->Location = System::Drawing::Point(559, 90);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(59, 17);
+			this->label4->Size = System::Drawing::Size(76, 21);
 			this->label4->TabIndex = 4;
 			this->label4->Text = L"Favorites";
 			// 
@@ -507,7 +507,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label5->Location = System::Drawing::Point(643, 93);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(101, 17);
+			this->label5->Size = System::Drawing::Size(125, 21);
 			this->label5->TabIndex = 4;
 			this->label5->Text = L"Send a Message";
 			// 
@@ -521,7 +521,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label3->Location = System::Drawing::Point(438, 90);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(93, 17);
+			this->label3->Size = System::Drawing::Size(116, 21);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Sent Messages";
 			// 
@@ -535,7 +535,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->IDLabel->Location = System::Drawing::Point(74, 61);
 			this->IDLabel->Name = L"IDLabel";
-			this->IDLabel->Size = System::Drawing::Size(29, 35);
+			this->IDLabel->Size = System::Drawing::Size(38, 45);
 			this->IDLabel->TabIndex = 4;
 			this->IDLabel->Text = L"2";
 			// 
@@ -549,7 +549,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label2->Location = System::Drawing::Point(290, 90);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(122, 17);
+			this->label2->Size = System::Drawing::Size(150, 21);
 			this->label2->TabIndex = 4;
 			this->label2->Text = L"Received Messages";
 			// 
@@ -563,7 +563,7 @@ namespace loginForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label1->Location = System::Drawing::Point(763, 92);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(50, 17);
+			this->label1->Size = System::Drawing::Size(63, 21);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"LogOut";
 			// 
@@ -732,6 +732,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	if (loginForm.isUserMatched == 1) {
 		homeForm.setLiveUser(loginForm.getLiveUser());
 		IDLabel->Text = gcnew String(homeForm.getLiveUserID().c_str());
+		homeForm.uploadUserMesages();
 		Home_Panel->Show();
 		register_Panel->Hide();
 		LoginPanel->Hide();

@@ -46,7 +46,6 @@ LoginForm::LoginForm() {
 void LoginForm::loginCheck() {
     isUserMatched = 0;
     for (int i = 0; i < user.size();i++) {
-        cout << user[i].Username << " " << user[i].password << endl;
         if (toStandardString(liveUserName) == user[i].Username) {
             if (toStandardString(livePassword) == user[i].password) {
                 isUserMatched = 1;

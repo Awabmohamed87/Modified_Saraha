@@ -3,6 +3,4 @@
 
 using namespace std;
 
-ofstream messageWriter("users.txt", ios::app);
-ifstream messageReader("users.txt");
 
