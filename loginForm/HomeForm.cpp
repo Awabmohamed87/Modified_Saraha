@@ -19,3 +19,13 @@ string HomeForm::getLiveUserID()
 {
 	return liveuser.ID;
 }
+
+Users HomeForm::getLiveUser()
+{
+	return liveuser;
+}
+
+string HomeForm::getMessage(Users sUser, int i)
+{
+	return sUser.Messages[i].content;
+}

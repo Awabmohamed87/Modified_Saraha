@@ -46,8 +46,8 @@ LoginForm::LoginForm() {
 void LoginForm::loginCheck() {
     isUserMatched = 0;
     for (int i = 0; i < user.size();i++) {
-        if (toStandardString(liveUserName) == user[i].Username) {
-            if (toStandardString(livePassword) == user[i].password) {
+        if (liveUserName == gcnew String(user[i].Username.c_str())) {
+            if (livePassword == gcnew String(user[i].password.c_str())) {
                 isUserMatched = 1;
                 LiveUser.Username = user[i].Username;
                 LiveUser.password = user[i].password;

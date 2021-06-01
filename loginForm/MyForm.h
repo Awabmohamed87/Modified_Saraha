@@ -116,6 +116,7 @@ namespace loginForm {
 	private: System::Windows::Forms::Label^ IDLabel;
 
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
 
 
 
@@ -189,6 +190,7 @@ namespace loginForm {
 			this->Home_Panel = (gcnew System::Windows::Forms::Panel());
 			this->contact_Panel = (gcnew System::Windows::Forms::Panel());
 			this->homeContainer_Panel = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -208,6 +210,7 @@ namespace loginForm {
 			this->LoginPanel->SuspendLayout();
 			this->panel9->SuspendLayout();
 			this->Home_Panel->SuspendLayout();
+			this->homeContainer_Panel->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// UserNameBox
@@ -433,9 +436,9 @@ namespace loginForm {
 			// 
 			// panel9
 			// 
+			this->panel9->Controls->Add(this->LoginPanel);
 			this->panel9->Controls->Add(this->Home_Panel);
 			this->panel9->Controls->Add(this->register_Panel);
-			this->panel9->Controls->Add(this->LoginPanel);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel9->Location = System::Drawing::Point(0, 0);
 			this->panel9->Name = L"panel9";
@@ -478,10 +481,19 @@ namespace loginForm {
 			// 
 			// homeContainer_Panel
 			// 
+			this->homeContainer_Panel->Controls->Add(this->flowLayoutPanel1);
 			this->homeContainer_Panel->Location = System::Drawing::Point(241, 116);
 			this->homeContainer_Panel->Name = L"homeContainer_Panel";
 			this->homeContainer_Panel->Size = System::Drawing::Size(612, 436);
 			this->homeContainer_Panel->TabIndex = 5;
+			// 
+			// flowLayoutPanel1
+			// 
+			this->flowLayoutPanel1->AutoScroll = true;
+			this->flowLayoutPanel1->Location = System::Drawing::Point(50, 33);
+			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
+			this->flowLayoutPanel1->Size = System::Drawing::Size(534, 373);
+			this->flowLayoutPanel1->TabIndex = 0;
 			// 
 			// label4
 			// 
@@ -647,6 +659,7 @@ namespace loginForm {
 			this->receivedM_Button->TabIndex = 2;
 			this->receivedM_Button->UseVisualStyleBackColor = false;
 			this->receivedM_Button->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_2);
+			this->receivedM_Button->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::receivedM_Button_MouseClick);
 			// 
 			// logout_Button
 			// 
@@ -710,6 +723,7 @@ namespace loginForm {
 			this->panel9->ResumeLayout(false);
 			this->Home_Panel->ResumeLayout(false);
 			this->Home_Panel->PerformLayout();
+			this->homeContainer_Panel->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -813,5 +827,26 @@ private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^
 }
 private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
 }
+	   int c = 0;
+private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	createCard(homeForm.getMessage(homeForm.getLiveUser(),c));
+}
+	   void createCard(string s) {
+		   Panel^ x = gcnew Panel();
+		   Label^ messageSender = gcnew Label();
+		   Label^ messageContent = gcnew Label();
+		   messageContent->AutoSize = true;
+		   messageContent->Text = gcnew String(s.c_str());
+		   messageContent->ForeColor = Color().White;
+
+		   messageSender->Text = "amged";
+		   messageSender->ForeColor = Color().White;
+		   x->Size = System::Drawing::Size(500, 70);
+		   x->BackColor = Color().Gray;
+		   x->Controls->Add(messageSender);
+		   x->Controls->Add(messageContent);
+		   flowLayoutPanel1->Controls->Add(x);
+		   c++;
+	   }
 };
 }
