@@ -8,5 +8,6 @@ public:
 	string getLiveUserID();
 	Users getLiveUser();
 	string getMessage(Users sUser,int i);
+	int getNumberOfMessages();
 };
 
