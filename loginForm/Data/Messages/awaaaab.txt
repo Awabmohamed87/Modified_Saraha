@@ -1,9 +1,8 @@
 hi, awab how are u?
 ***
 awaaaab abdo
+true
 from demiana ezek?
 ***
 awaaaab demiana
-bla bla bla bla
-***
-awaaaab abdo
+false

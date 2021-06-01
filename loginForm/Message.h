@@ -8,6 +8,6 @@ class Message
 public:
 	string content;
 	string sender, receiver;
-
+	bool isFavourite;
 };
 

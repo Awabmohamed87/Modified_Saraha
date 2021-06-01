@@ -436,9 +436,9 @@ namespace loginForm {
 			// 
 			// panel9
 			// 
+			this->panel9->Controls->Add(this->register_Panel);
 			this->panel9->Controls->Add(this->LoginPanel);
 			this->panel9->Controls->Add(this->Home_Panel);
-			this->panel9->Controls->Add(this->register_Panel);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel9->Location = System::Drawing::Point(0, 0);
 			this->panel9->Name = L"panel9";
@@ -746,7 +746,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	if (loginForm.isUserMatched == 1) {
 		homeForm.setLiveUser(loginForm.getLiveUser());
 		IDLabel->Text = gcnew String(homeForm.getLiveUserID().c_str());
-		homeForm.uploadUserMesages();
+		homeForm.uploadUserMessages();
 		Home_Panel->Show();
 		register_Panel->Hide();
 		LoginPanel->Hide();
@@ -775,9 +775,16 @@ private: System::Void panel3_Paint(System::Object^ sender, System::Windows::Form
 			MessageBox::Show(" passwords doesn't match", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		else if (registerForm.getRegisterState() == 0) {
 			loginForm.updateUsers(registerForm.getLatestUser());
+			homeForm.setLiveUser(registerForm.getLiveUser());
+			IDLabel->Text = gcnew String(homeForm.getLiveUserID().c_str());
+			homeForm.uploadUserMessages();
+			Home_Panel->Show();
+			register_Panel->Hide();
+			LoginPanel->Hide();
+		}
 
 		}
-	}
+	
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	register_Panel->Hide();
 	LoginPanel->Show();
@@ -832,7 +839,7 @@ private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System
 	createCard(homeForm.getMessage(homeForm.getLiveUser(),c));
 }
 	   void createCard(string s) {
-		   Panel^ x = gcnew Panel();
+		   Panel^ messageTemplate = gcnew Panel();
 		   Label^ messageSender = gcnew Label();
 		   Label^ messageContent = gcnew Label();
 		   messageContent->AutoSize = true;
@@ -841,11 +848,11 @@ private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System
 
 		   messageSender->Text = "amged";
 		   messageSender->ForeColor = Color().White;
-		   x->Size = System::Drawing::Size(500, 70);
-		   x->BackColor = Color().Gray;
-		   x->Controls->Add(messageSender);
-		   x->Controls->Add(messageContent);
-		   flowLayoutPanel1->Controls->Add(x);
+		   messageTemplate->Size = System::Drawing::Size(500, 70);
+		   messageTemplate->BackColor = Color().Gray;
+		   messageTemplate->Controls->Add(messageSender);
+		   messageTemplate->Controls->Add(messageContent);
+		   flowLayoutPanel1->Controls->Add(messageTemplate);
 		   c++;
 	   }
 };

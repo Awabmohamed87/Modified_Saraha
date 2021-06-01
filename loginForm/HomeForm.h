@@ -4,7 +4,7 @@ ref class HomeForm
 {
 public:
 	void setLiveUser(Users user);
-	void uploadUserMesages();
+	void uploadUserMessages();
 	string getLiveUserID();
 	Users getLiveUser();
 	string getMessage(Users sUser,int i);

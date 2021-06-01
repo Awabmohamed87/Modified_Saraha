@@ -21,7 +21,7 @@ ifstream messageReader;
 		else {
 
 			bool isContentRead = false;
-			string s;
+			string s,s0;
 
 			Message tempMessage;
 			while (messageReader) {
@@ -37,7 +37,10 @@ ifstream messageReader;
 				else {
 					messageReader >> tempMessage.receiver;
 					messageReader >> tempMessage.sender;
-					
+					messageReader >> s0;
+
+					if (s0 == "true")tempMessage.isFavourite = true;
+					else tempMessage.isFavourite = false;
 
 					Messages.push_back(tempMessage);
 					isContentRead = false;
@@ -46,6 +49,7 @@ ifstream messageReader;
 			}
 			for (int i = 0; i < Messages.size();i++) {
 				cout << Messages[i].content << endl<<Messages[i].sender<<" "<<Messages[i].receiver<<endl;
+				cout << Messages[i].isFavourite << endl;
 			}
 		}
 	}

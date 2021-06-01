@@ -10,7 +10,7 @@ void HomeForm::setLiveUser(Users user)
 	liveuser = user;
 }
 
-void HomeForm::uploadUserMesages()
+void HomeForm::uploadUserMessages()
 {
 	liveuser.uploadMessages(liveuser);
 }

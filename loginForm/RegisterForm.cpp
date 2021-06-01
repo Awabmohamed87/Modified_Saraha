@@ -107,6 +107,11 @@ int RegisterForm::getRegisterState()
     return registerState;
 }
 
+Users RegisterForm::getLiveUser()
+{
+    return liveUser;
+}
+
 void RegisterForm::updateFile() {
     std::cout << "im here" << endl;
     usersFileUpdate << Userss[Userss.size() - 1].Username;

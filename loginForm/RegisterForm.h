@@ -29,6 +29,7 @@ public:
 	void RegisterCheck();
 	void setRegisterState(int registerState);
 	int getRegisterState();
+	Users getLiveUser();
 	void updateFile();
 	Users getLatestUser();
 };
