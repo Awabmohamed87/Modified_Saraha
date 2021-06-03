@@ -1,11 +1,20 @@
 #pragma once
 #include <iostream>
+#include "Messages.h"
 #include "LoginForm.h"
-#include "RegisterForm.h"
 #include"HomeForm.h"
-
+#include "RegisterForm.h"
 using namespace std;
+using System::Runtime::InteropServices::Marshal;
+static std::string toStandardString(System::String^ string)
+{
+	System::IntPtr pointer = Marshal::StringToHGlobalAnsi(string);
+	char* charPointer = reinterpret_cast<char*>(pointer.ToPointer());
+	std::string returnString(charPointer, string->Length);
+	Marshal::FreeHGlobal(pointer);
 
+	return returnString;
+}
 namespace loginForm {
 
 	using namespace System;
@@ -117,19 +126,13 @@ namespace loginForm {
 
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::ListBox^ contactsList;
+	private: System::Windows::Forms::Panel^ sendMessage;
+	private: System::Windows::Forms::Button^ button2;
+private: System::Windows::Forms::TextBox^ MessageContent;
+private: System::Windows::Forms::Panel^ addContactPanel;
+private: System::Windows::Forms::Button^ button3;
+private: System::Windows::Forms::TextBox^ addTextBox;
 
 
 
@@ -141,19 +144,6 @@ namespace loginForm {
 
 
 	private: System::ComponentModel::IContainer^ components;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	protected:
@@ -189,8 +179,7 @@ namespace loginForm {
 			this->panel9 = (gcnew System::Windows::Forms::Panel());
 			this->Home_Panel = (gcnew System::Windows::Forms::Panel());
 			this->contact_Panel = (gcnew System::Windows::Forms::Panel());
-			this->homeContainer_Panel = (gcnew System::Windows::Forms::Panel());
-			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->contactsList = (gcnew System::Windows::Forms::ListBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -206,11 +195,22 @@ namespace loginForm {
 			this->logout_Button = (gcnew System::Windows::Forms::Button());
 			this->add_Button = (gcnew System::Windows::Forms::Button());
 			this->exit_Button_home = (gcnew System::Windows::Forms::Button());
+			this->homeContainer_Panel = (gcnew System::Windows::Forms::Panel());
+			this->addContactPanel = (gcnew System::Windows::Forms::Panel());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->addTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->sendMessage = (gcnew System::Windows::Forms::Panel());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->MessageContent = (gcnew System::Windows::Forms::TextBox());
+			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->register_Panel->SuspendLayout();
 			this->LoginPanel->SuspendLayout();
 			this->panel9->SuspendLayout();
 			this->Home_Panel->SuspendLayout();
+			this->contact_Panel->SuspendLayout();
 			this->homeContainer_Panel->SuspendLayout();
+			this->addContactPanel->SuspendLayout();
+			this->sendMessage->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// UserNameBox
@@ -218,12 +218,12 @@ namespace loginForm {
 			this->UserNameBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(87)), static_cast<System::Int32>(static_cast<System::Byte>(140)),
 				static_cast<System::Int32>(static_cast<System::Byte>(146)));
 			this->UserNameBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->UserNameBox->Font = (gcnew System::Drawing::Font(L"Asap Medium", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->UserNameBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->UserNameBox->ForeColor = System::Drawing::Color::White;
 			this->UserNameBox->Location = System::Drawing::Point(199, 181);
 			this->UserNameBox->Name = L"UserNameBox";
-			this->UserNameBox->Size = System::Drawing::Size(192, 31);
+			this->UserNameBox->Size = System::Drawing::Size(192, 30);
 			this->UserNameBox->TabIndex = 3;
 			this->UserNameBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
@@ -232,12 +232,12 @@ namespace loginForm {
 			this->PasswordBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(87)), static_cast<System::Int32>(static_cast<System::Byte>(140)),
 				static_cast<System::Int32>(static_cast<System::Byte>(146)));
 			this->PasswordBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->PasswordBox->Font = (gcnew System::Drawing::Font(L"Asap Medium", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->PasswordBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->PasswordBox->ForeColor = System::Drawing::Color::White;
 			this->PasswordBox->Location = System::Drawing::Point(200, 221);
 			this->PasswordBox->Name = L"PasswordBox";
-			this->PasswordBox->Size = System::Drawing::Size(191, 31);
+			this->PasswordBox->Size = System::Drawing::Size(191, 30);
 			this->PasswordBox->TabIndex = 5;
 			this->PasswordBox->UseSystemPasswordChar = true;
 			this->PasswordBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
@@ -249,7 +249,7 @@ namespace loginForm {
 			this->LoginButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(116)), static_cast<System::Int32>(static_cast<System::Byte>(147)));
 			this->LoginButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->LoginButton->Font = (gcnew System::Drawing::Font(L"Asap", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->LoginButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->LoginButton->ForeColor = System::Drawing::Color::White;
 			this->LoginButton->Location = System::Drawing::Point(235, 319);
@@ -269,7 +269,7 @@ namespace loginForm {
 			this->RegisterButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
 			this->RegisterButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Gainsboro;
 			this->RegisterButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->RegisterButton->Font = (gcnew System::Drawing::Font(L"Asap", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->RegisterButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->RegisterButton->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(87)), static_cast<System::Int32>(static_cast<System::Byte>(140)),
 				static_cast<System::Int32>(static_cast<System::Byte>(146)));
@@ -320,7 +320,7 @@ namespace loginForm {
 			this->register_Button->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(116)), static_cast<System::Int32>(static_cast<System::Byte>(147)));
 			this->register_Button->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->register_Button->Font = (gcnew System::Drawing::Font(L"Asap", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->register_Button->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->register_Button->ForeColor = System::Drawing::Color::White;
 			this->register_Button->Location = System::Drawing::Point(278, 355);
@@ -339,7 +339,7 @@ namespace loginForm {
 			this->loginPage_Button->FlatAppearance->BorderSize = 0;
 			this->loginPage_Button->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Gainsboro;
 			this->loginPage_Button->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->loginPage_Button->Font = (gcnew System::Drawing::Font(L"Asap", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->loginPage_Button->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->loginPage_Button->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(87)), static_cast<System::Int32>(static_cast<System::Byte>(140)),
 				static_cast<System::Int32>(static_cast<System::Byte>(146)));
@@ -356,12 +356,12 @@ namespace loginForm {
 			this->passwordConfirmBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(87)),
 				static_cast<System::Int32>(static_cast<System::Byte>(140)), static_cast<System::Int32>(static_cast<System::Byte>(146)));
 			this->passwordConfirmBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->passwordConfirmBox->Font = (gcnew System::Drawing::Font(L"Asap Medium", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->passwordConfirmBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->passwordConfirmBox->ForeColor = System::Drawing::Color::White;
 			this->passwordConfirmBox->Location = System::Drawing::Point(244, 275);
 			this->passwordConfirmBox->Name = L"passwordConfirmBox";
-			this->passwordConfirmBox->Size = System::Drawing::Size(191, 28);
+			this->passwordConfirmBox->Size = System::Drawing::Size(191, 27);
 			this->passwordConfirmBox->TabIndex = 15;
 			this->passwordConfirmBox->UseSystemPasswordChar = true;
 			// 
@@ -370,12 +370,12 @@ namespace loginForm {
 			this->RegisterPasswordBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(87)),
 				static_cast<System::Int32>(static_cast<System::Byte>(140)), static_cast<System::Int32>(static_cast<System::Byte>(146)));
 			this->RegisterPasswordBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->RegisterPasswordBox->Font = (gcnew System::Drawing::Font(L"Asap Medium", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->RegisterPasswordBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->RegisterPasswordBox->ForeColor = System::Drawing::Color::White;
 			this->RegisterPasswordBox->Location = System::Drawing::Point(244, 236);
 			this->RegisterPasswordBox->Name = L"RegisterPasswordBox";
-			this->RegisterPasswordBox->Size = System::Drawing::Size(184, 28);
+			this->RegisterPasswordBox->Size = System::Drawing::Size(184, 27);
 			this->RegisterPasswordBox->TabIndex = 12;
 			this->RegisterPasswordBox->UseSystemPasswordChar = true;
 			// 
@@ -384,12 +384,12 @@ namespace loginForm {
 			this->ResgisterUserNameBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(87)),
 				static_cast<System::Int32>(static_cast<System::Byte>(140)), static_cast<System::Int32>(static_cast<System::Byte>(146)));
 			this->ResgisterUserNameBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->ResgisterUserNameBox->Font = (gcnew System::Drawing::Font(L"Asap Medium", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->ResgisterUserNameBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->ResgisterUserNameBox->ForeColor = System::Drawing::Color::White;
 			this->ResgisterUserNameBox->Location = System::Drawing::Point(245, 198);
 			this->ResgisterUserNameBox->Name = L"ResgisterUserNameBox";
-			this->ResgisterUserNameBox->Size = System::Drawing::Size(190, 28);
+			this->ResgisterUserNameBox->Size = System::Drawing::Size(190, 27);
 			this->ResgisterUserNameBox->TabIndex = 9;
 			// 
 			// IDBox
@@ -397,12 +397,12 @@ namespace loginForm {
 			this->IDBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(87)), static_cast<System::Int32>(static_cast<System::Byte>(140)),
 				static_cast<System::Int32>(static_cast<System::Byte>(146)));
 			this->IDBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->IDBox->Font = (gcnew System::Drawing::Font(L"Asap Medium", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->IDBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->IDBox->ForeColor = System::Drawing::Color::White;
 			this->IDBox->Location = System::Drawing::Point(246, 159);
 			this->IDBox->Name = L"IDBox";
-			this->IDBox->Size = System::Drawing::Size(182, 28);
+			this->IDBox->Size = System::Drawing::Size(190, 27);
 			this->IDBox->TabIndex = 6;
 			// 
 			// LoginPanel
@@ -436,9 +436,9 @@ namespace loginForm {
 			// 
 			// panel9
 			// 
+			this->panel9->Controls->Add(this->Home_Panel);
 			this->panel9->Controls->Add(this->register_Panel);
 			this->panel9->Controls->Add(this->LoginPanel);
-			this->panel9->Controls->Add(this->Home_Panel);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel9->Location = System::Drawing::Point(0, 0);
 			this->panel9->Name = L"panel9";
@@ -450,7 +450,6 @@ namespace loginForm {
 			this->Home_Panel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Home_Panel.BackgroundImage")));
 			this->Home_Panel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Home_Panel->Controls->Add(this->contact_Panel);
-			this->Home_Panel->Controls->Add(this->homeContainer_Panel);
 			this->Home_Panel->Controls->Add(this->label4);
 			this->Home_Panel->Controls->Add(this->label5);
 			this->Home_Panel->Controls->Add(this->label3);
@@ -466,6 +465,7 @@ namespace loginForm {
 			this->Home_Panel->Controls->Add(this->logout_Button);
 			this->Home_Panel->Controls->Add(this->add_Button);
 			this->Home_Panel->Controls->Add(this->exit_Button_home);
+			this->Home_Panel->Controls->Add(this->homeContainer_Panel);
 			this->Home_Panel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->Home_Panel->Location = System::Drawing::Point(0, 0);
 			this->Home_Panel->Name = L"Home_Panel";
@@ -474,38 +474,32 @@ namespace loginForm {
 			// 
 			// contact_Panel
 			// 
+			this->contact_Panel->Controls->Add(this->contactsList);
 			this->contact_Panel->Location = System::Drawing::Point(33, 177);
 			this->contact_Panel->Name = L"contact_Panel";
 			this->contact_Panel->Size = System::Drawing::Size(201, 346);
 			this->contact_Panel->TabIndex = 6;
 			// 
-			// homeContainer_Panel
+			// contactsList
 			// 
-			this->homeContainer_Panel->Controls->Add(this->flowLayoutPanel1);
-			this->homeContainer_Panel->Location = System::Drawing::Point(241, 116);
-			this->homeContainer_Panel->Name = L"homeContainer_Panel";
-			this->homeContainer_Panel->Size = System::Drawing::Size(612, 436);
-			this->homeContainer_Panel->TabIndex = 5;
-			// 
-			// flowLayoutPanel1
-			// 
-			this->flowLayoutPanel1->AutoScroll = true;
-			this->flowLayoutPanel1->Location = System::Drawing::Point(50, 33);
-			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-			this->flowLayoutPanel1->Size = System::Drawing::Size(534, 373);
-			this->flowLayoutPanel1->TabIndex = 0;
+			this->contactsList->FormattingEnabled = true;
+			this->contactsList->ItemHeight = 33;
+			this->contactsList->Location = System::Drawing::Point(0, 0);
+			this->contactsList->Name = L"contactsList";
+			this->contactsList->Size = System::Drawing::Size(201, 334);
+			this->contactsList->TabIndex = 0;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->BackColor = System::Drawing::Color::Transparent;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Raleway SemiBold", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label4->Location = System::Drawing::Point(559, 90);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(76, 21);
+			this->label4->Size = System::Drawing::Size(78, 18);
 			this->label4->TabIndex = 4;
 			this->label4->Text = L"Favorites";
 			// 
@@ -513,13 +507,13 @@ namespace loginForm {
 			// 
 			this->label5->AutoSize = true;
 			this->label5->BackColor = System::Drawing::Color::Transparent;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Raleway SemiBold", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label5->Location = System::Drawing::Point(643, 93);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(125, 21);
+			this->label5->Size = System::Drawing::Size(133, 18);
 			this->label5->TabIndex = 4;
 			this->label5->Text = L"Send a Message";
 			// 
@@ -527,13 +521,13 @@ namespace loginForm {
 			// 
 			this->label3->AutoSize = true;
 			this->label3->BackColor = System::Drawing::Color::Transparent;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Raleway SemiBold", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label3->Location = System::Drawing::Point(438, 90);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(116, 21);
+			this->label3->Size = System::Drawing::Size(124, 18);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Sent Messages";
 			// 
@@ -541,13 +535,13 @@ namespace loginForm {
 			// 
 			this->IDLabel->AutoSize = true;
 			this->IDLabel->BackColor = System::Drawing::Color::Transparent;
-			this->IDLabel->Font = (gcnew System::Drawing::Font(L"Asap SemiBold", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->IDLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->IDLabel->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->IDLabel->Location = System::Drawing::Point(74, 61);
 			this->IDLabel->Name = L"IDLabel";
-			this->IDLabel->Size = System::Drawing::Size(38, 45);
+			this->IDLabel->Size = System::Drawing::Size(37, 39);
 			this->IDLabel->TabIndex = 4;
 			this->IDLabel->Text = L"2";
 			// 
@@ -555,13 +549,13 @@ namespace loginForm {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::Color::Transparent;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Raleway SemiBold", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label2->Location = System::Drawing::Point(290, 90);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(150, 21);
+			this->label2->Size = System::Drawing::Size(159, 18);
 			this->label2->TabIndex = 4;
 			this->label2->Text = L"Received Messages";
 			// 
@@ -569,20 +563,20 @@ namespace loginForm {
 			// 
 			this->label1->AutoSize = true;
 			this->label1->BackColor = System::Drawing::Color::Transparent;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Raleway SemiBold", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label1->Location = System::Drawing::Point(763, 92);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(63, 21);
+			this->label1->Size = System::Drawing::Size(63, 18);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"LogOut";
 			// 
 			// search_TextBox
 			// 
 			this->search_TextBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->search_TextBox->Font = (gcnew System::Drawing::Font(L"Asap", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->search_TextBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->search_TextBox->Location = System::Drawing::Point(49, 146);
 			this->search_TextBox->Multiline = true;
@@ -590,6 +584,7 @@ namespace loginForm {
 			this->search_TextBox->Size = System::Drawing::Size(111, 19);
 			this->search_TextBox->TabIndex = 3;
 			this->search_TextBox->Tag = L"Search";
+			this->search_TextBox->TextChanged += gcnew System::EventHandler(this, &MyForm::search_TextBox_TextChanged);
 			// 
 			// search_Button
 			// 
@@ -630,7 +625,7 @@ namespace loginForm {
 			this->button1->Size = System::Drawing::Size(77, 41);
 			this->button1->TabIndex = 2;
 			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_2);
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_3);
 			// 
 			// SentM_Button
 			// 
@@ -644,7 +639,7 @@ namespace loginForm {
 			this->SentM_Button->Size = System::Drawing::Size(77, 41);
 			this->SentM_Button->TabIndex = 2;
 			this->SentM_Button->UseVisualStyleBackColor = false;
-			this->SentM_Button->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_2);
+			this->SentM_Button->Click += gcnew System::EventHandler(this, &MyForm::SentM_Button_Click);
 			// 
 			// receivedM_Button
 			// 
@@ -673,6 +668,7 @@ namespace loginForm {
 			this->logout_Button->Size = System::Drawing::Size(48, 45);
 			this->logout_Button->TabIndex = 2;
 			this->logout_Button->UseVisualStyleBackColor = false;
+			this->logout_Button->Click += gcnew System::EventHandler(this, &MyForm::logout_Button_Click);
 			// 
 			// add_Button
 			// 
@@ -686,6 +682,7 @@ namespace loginForm {
 			this->add_Button->Size = System::Drawing::Size(32, 23);
 			this->add_Button->TabIndex = 2;
 			this->add_Button->UseVisualStyleBackColor = false;
+			this->add_Button->Click += gcnew System::EventHandler(this, &MyForm::add_Button_Click);
 			// 
 			// exit_Button_home
 			// 
@@ -700,6 +697,81 @@ namespace loginForm {
 			this->exit_Button_home->TabIndex = 1;
 			this->exit_Button_home->UseVisualStyleBackColor = false;
 			this->exit_Button_home->Click += gcnew System::EventHandler(this, &MyForm::button2_Click_1);
+			// 
+			// homeContainer_Panel
+			// 
+			this->homeContainer_Panel->Controls->Add(this->addContactPanel);
+			this->homeContainer_Panel->Controls->Add(this->sendMessage);
+			this->homeContainer_Panel->Controls->Add(this->flowLayoutPanel1);
+			this->homeContainer_Panel->Location = System::Drawing::Point(241, 116);
+			this->homeContainer_Panel->Name = L"homeContainer_Panel";
+			this->homeContainer_Panel->Size = System::Drawing::Size(612, 436);
+			this->homeContainer_Panel->TabIndex = 5;
+			// 
+			// addContactPanel
+			// 
+			this->addContactPanel->Controls->Add(this->button3);
+			this->addContactPanel->Controls->Add(this->addTextBox);
+			this->addContactPanel->Location = System::Drawing::Point(0, 0);
+			this->addContactPanel->Name = L"addContactPanel";
+			this->addContactPanel->Size = System::Drawing::Size(611, 436);
+			this->addContactPanel->TabIndex = 2;
+			this->addContactPanel->Visible = false;
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(200, 161);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(144, 39);
+			this->button3->TabIndex = 1;
+			this->button3->Text = L"addButton";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click_1);
+			// 
+			// addTextBox
+			// 
+			this->addTextBox->Location = System::Drawing::Point(156, 56);
+			this->addTextBox->Name = L"addTextBox";
+			this->addTextBox->Size = System::Drawing::Size(260, 40);
+			this->addTextBox->TabIndex = 0;
+			// 
+			// sendMessage
+			// 
+			this->sendMessage->Controls->Add(this->button2);
+			this->sendMessage->Controls->Add(this->MessageContent);
+			this->sendMessage->Location = System::Drawing::Point(0, 0);
+			this->sendMessage->Name = L"sendMessage";
+			this->sendMessage->Size = System::Drawing::Size(609, 433);
+			this->sendMessage->TabIndex = 1;
+			this->sendMessage->Visible = false;
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(180, 187);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(164, 41);
+			this->button2->TabIndex = 1;
+			this->button2->Text = L"Send";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click_2);
+			// 
+			// MessageContent
+			// 
+			this->MessageContent->Location = System::Drawing::Point(96, 48);
+			this->MessageContent->Multiline = true;
+			this->MessageContent->Name = L"MessageContent";
+			this->MessageContent->Size = System::Drawing::Size(420, 81);
+			this->MessageContent->TabIndex = 0;
+			// 
+			// flowLayoutPanel1
+			// 
+			this->flowLayoutPanel1->AutoScroll = true;
+			this->flowLayoutPanel1->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->flowLayoutPanel1->Location = System::Drawing::Point(50, 33);
+			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
+			this->flowLayoutPanel1->Size = System::Drawing::Size(534, 373);
+			this->flowLayoutPanel1->TabIndex = 0;
+			this->flowLayoutPanel1->Visible = false;
 			// 
 			// MyForm
 			// 
@@ -723,7 +795,12 @@ namespace loginForm {
 			this->panel9->ResumeLayout(false);
 			this->Home_Panel->ResumeLayout(false);
 			this->Home_Panel->PerformLayout();
+			this->contact_Panel->ResumeLayout(false);
 			this->homeContainer_Panel->ResumeLayout(false);
+			this->addContactPanel->ResumeLayout(false);
+			this->addContactPanel->PerformLayout();
+			this->sendMessage->ResumeLayout(false);
+			this->sendMessage->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -734,27 +811,22 @@ namespace loginForm {
 	}
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-		   LoginForm loginForm;
 		   RegisterForm registerForm;
+		   LoginForm loginForm;
 		   HomeForm homeForm;
-		   
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	loginForm.setLiveUserName(UserNameBox->Text);
-	loginForm.setLivePassword(PasswordBox->Text);
-	loginForm.loginCheck();
-
+	
+	loginForm.CheckUser(UserNameBox->Text, PasswordBox->Text);
 	if (loginForm.isUserMatched == 1) {
-		homeForm.setLiveUser(loginForm.getLiveUser());
-		IDLabel->Text = gcnew String(homeForm.getLiveUserID().c_str());
-		homeForm.uploadUserMessages();
+		IDLabel->Text = gcnew String(homeForm.getLiveUser().ID.c_str());
+		refreshContactList();
 		Home_Panel->Show();
 		register_Panel->Hide();
 		LoginPanel->Hide();
 	}
 	else {
-		MessageBox::Show("user name or password is incorrect", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		MessageBox::Show("user name or password is incorrect", "Incorret Id or pw", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 	}
-
 }
 private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -764,25 +836,17 @@ private: System::Void panel3_Paint(System::Object^ sender, System::Windows::Form
 }
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		registerForm.setRegisterState(0);
-		registerForm.setLiveID(IDBox->Text);
-		registerForm.setLiveUserName(ResgisterUserNameBox->Text);
-		registerForm.setLivePassword(RegisterPasswordBox->Text);
-		registerForm.setLivePasswordConfirm(passwordConfirmBox->Text);
-		registerForm.RegisterCheck();
+		registerForm.RegisterCheck(ResgisterUserNameBox->Text,IDBox->Text,RegisterPasswordBox->Text,passwordConfirmBox->Text);
 		if (registerForm.getRegisterState() == 1)
 			MessageBox::Show(" user name already exists", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		else if (registerForm.getRegisterState() == 2)
 			MessageBox::Show(" passwords doesn't match", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		else if (registerForm.getRegisterState() == 0) {
-			loginForm.updateUsers(registerForm.getLatestUser());
-			homeForm.setLiveUser(registerForm.getLiveUser());
-			IDLabel->Text = gcnew String(homeForm.getLiveUserID().c_str());
-			homeForm.uploadUserMessages();
-			Home_Panel->Show();
+			MessageBox::Show("Succesfully Registered", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			Home_Panel->Hide();
 			register_Panel->Hide();
-			LoginPanel->Hide();
+			LoginPanel->Show();
 		}
-
 		}
 	
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -794,7 +858,6 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	register_Panel->Show();
 
 
-	
 
 }
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -833,27 +896,106 @@ private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^
 	Environment::Exit(0);
 }
 private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
+	flowLayoutPanel1->Controls->Clear();
+	sendMessage->Hide();
+	flowLayoutPanel1->Show();
+	homeForm.uploadUserMessages();
+	for (int i = 0; i < homeForm.getLiveUser().Message.size(); i++) {
+		if(homeForm.getLiveUser().Message[i].isFavourite == true)
+		createCard(homeForm.getMessage(i).content);
+	}
 }
-	   int c = 0;
 private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-	createCard(homeForm.getMessage(homeForm.getLiveUser(),c));
-}
+	flowLayoutPanel1->Controls->Clear();
+	sendMessage->Hide();
+	flowLayoutPanel1->Show();
+	homeForm.uploadUserMessages(); // mkanha hena 3shan lma n3ml el logout
+	for (int i = 0; i < homeForm.getLiveUser().Message.size(); i++) {
+		createCard(homeForm.getMessage(i).content);
+	}
+}	
+
+	   void refreshContactList() {
+		   contactsList->Items->Clear();
+		   homeForm.uploadContanctsList();
+		   for (int i = 0; i < homeForm.getLiveUser().ListOfContacts.size(); i++)
+			   contactsList->Items->Add(gcnew String(homeForm.getLiveUser().ListOfContacts[i].c_str()));
+	   }
 	   void createCard(string s) {
 		   Panel^ messageTemplate = gcnew Panel();
 		   Label^ messageSender = gcnew Label();
 		   Label^ messageContent = gcnew Label();
-		   messageContent->AutoSize = true;
+		   messageContent->Location = System::Drawing::Point(0, 30);
 		   messageContent->Text = gcnew String(s.c_str());
 		   messageContent->ForeColor = Color().White;
-
+		   messageContent->Size = System::Drawing::Size(520, 100);
+		   messageSender->Size = System::Drawing::Size(520,30);
 		   messageSender->Text = "amged";
 		   messageSender->ForeColor = Color().White;
-		   messageTemplate->Size = System::Drawing::Size(500, 70);
+		   messageTemplate->AutoSize = true;
+		   //  messageTemplate->Size = System::Drawing::Size(500, 70);
 		   messageTemplate->BackColor = Color().Gray;
 		   messageTemplate->Controls->Add(messageSender);
 		   messageTemplate->Controls->Add(messageContent);
 		   flowLayoutPanel1->Controls->Add(messageTemplate);
-		   c++;
 	   }
+	private: System::Void search_TextBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		contactsList->Items->Clear();
+		
+			for (int i = 0; i < homeForm.getLiveUser().ListOfContacts.size(); i++) {
+				String^ s = gcnew String(homeForm.getLiveUser().ListOfContacts[i].c_str());
+				if (s->Contains(search_TextBox->Text))
+					contactsList->Items->Add(gcnew String(homeForm.getLiveUser().ListOfContacts[i].c_str()));
+			}
+	}
+private: System::Void button1_Click_3(System::Object^ sender, System::EventArgs^ e) {
+	flowLayoutPanel1->Hide();
+	addContactPanel->Hide();
+	sendMessage->Show();
+}
+private: System::Void SentM_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+	sendMessage->Hide();
+	addContactPanel->Hide();
+	flowLayoutPanel1->Controls->Clear();
+	homeForm.uploadUserSentMessages();
+	flowLayoutPanel1->Show();
+	for (int i = 0; i < homeForm.getLiveUser().sentMessages.size(); i++) {
+		createCard(homeForm.getSentMessage(i).content);
+	}
+}
+	private: System::Void button2_Click_2(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			Messages tmpMessage;
+			tmpMessage.sender = homeForm.getLiveUser().Username;
+			tmpMessage.receiver = toStandardString(contactsList->SelectedItem->ToString());
+			tmpMessage.content = toStandardString(MessageContent->Text);
+			homeForm.sendMessage(tmpMessage);
+	}
+		catch (NullReferenceException^) {
+			MessageBox::Show("Please, Choose a contact", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+private: System::Void add_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+	sendMessage->Hide();	
+	flowLayoutPanel1->Hide();
+	addContactPanel->Show();
+}
+private: System::Void button3_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	bool AlreadyAdded=false;
+		for (int i = 0; i < homeForm.getLiveUser().ListOfContacts.size(); i++) {
+			if (toStandardString(addTextBox->Text) == homeForm.getLiveUser().ListOfContacts[i]) {
+				MessageBox::Show("you already have him dumb fuck", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+				AlreadyAdded = true;
+				break;
+			}
+		}
+	
+	   if (!AlreadyAdded) {
+		   homeForm.addContact(toStandardString(addTextBox->Text));
+		   refreshContactList();
+	   }
+}
+private: System::Void logout_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
