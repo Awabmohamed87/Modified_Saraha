@@ -1,6 +1,7 @@
 #include "HomeForm.h"
 #include"Users.h"
 #include<fstream>
+#include <cstdio>
 #include "Messages.h"
 using namespace std;
 
@@ -147,6 +148,22 @@ void HomeForm::uploadUserSentMessages()
 	messageReader.close();
 }
 
+void HomeForm::reloadUserSentMessages()
+{
+	
+	ofstream usersSentMessagesFileUpdate("Data/sentMessages/" + liveuser.Username + ".txt", ios::app);
+	cout<< liveuser.sentMessages.size() <<endl;
+	for (int i = 0; i < liveuser.Message.size();i++) {
+		usersSentMessagesFileUpdate << liveuser.sentMessages[i].content;
+		usersSentMessagesFileUpdate << "\n***\n";
+		usersSentMessagesFileUpdate << liveuser.sentMessages[i].receiver;
+		usersSentMessagesFileUpdate << " ";
+		usersSentMessagesFileUpdate << liveuser.sentMessages[i].sender;
+		usersSentMessagesFileUpdate << " false\n";
+	}
+	usersSentMessagesFileUpdate.close();
+}
+
 string HomeForm::getContact(int i)
 {
 	return liveuser.ListOfContacts[i];
@@ -155,6 +172,10 @@ string HomeForm::getContact(int i)
 Users HomeForm::getLiveUser()
 {
 	return liveuser;
+}
+
+void HomeForm::deleteLastSentMessage() {
+	liveuser.deleteThatMessage();
 }
 
 Messages HomeForm::getMessage(int i)

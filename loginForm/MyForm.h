@@ -127,12 +127,24 @@ namespace loginForm {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
 	private: System::Windows::Forms::ListBox^ contactsList;
-	private: System::Windows::Forms::Panel^ sendMessage;
+	private: System::Windows::Forms::Panel^ sendMessagePanel;
+
 	private: System::Windows::Forms::Button^ button2;
 private: System::Windows::Forms::TextBox^ MessageContent;
 private: System::Windows::Forms::Panel^ addContactPanel;
 private: System::Windows::Forms::Button^ button3;
 private: System::Windows::Forms::TextBox^ addTextBox;
+private: System::Windows::Forms::Panel^ undoButtonPanel;
+private: System::Windows::Forms::Label^ undoLabel;
+private: System::Windows::Forms::Button^ undoButton;
+private: System::Windows::Forms::TextBox^ messageReciverNameBox;
+private: System::Windows::Forms::Label^ label7;
+private: System::Windows::Forms::Label^ label6;
+private: System::Windows::Forms::Label^ label8;
+
+
+
+
 
 
 
@@ -196,21 +208,30 @@ private: System::Windows::Forms::TextBox^ addTextBox;
 			this->add_Button = (gcnew System::Windows::Forms::Button());
 			this->exit_Button_home = (gcnew System::Windows::Forms::Button());
 			this->homeContainer_Panel = (gcnew System::Windows::Forms::Panel());
-			this->addContactPanel = (gcnew System::Windows::Forms::Panel());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->addTextBox = (gcnew System::Windows::Forms::TextBox());
-			this->sendMessage = (gcnew System::Windows::Forms::Panel());
+			this->sendMessagePanel = (gcnew System::Windows::Forms::Panel());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->messageReciverNameBox = (gcnew System::Windows::Forms::TextBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->MessageContent = (gcnew System::Windows::Forms::TextBox());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->undoButtonPanel = (gcnew System::Windows::Forms::Panel());
+			this->undoLabel = (gcnew System::Windows::Forms::Label());
+			this->undoButton = (gcnew System::Windows::Forms::Button());
+			this->addContactPanel = (gcnew System::Windows::Forms::Panel());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->addTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->register_Panel->SuspendLayout();
 			this->LoginPanel->SuspendLayout();
 			this->panel9->SuspendLayout();
 			this->Home_Panel->SuspendLayout();
 			this->contact_Panel->SuspendLayout();
 			this->homeContainer_Panel->SuspendLayout();
+			this->sendMessagePanel->SuspendLayout();
+			this->flowLayoutPanel1->SuspendLayout();
+			this->undoButtonPanel->SuspendLayout();
 			this->addContactPanel->SuspendLayout();
-			this->sendMessage->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// UserNameBox
@@ -436,9 +457,9 @@ private: System::Windows::Forms::TextBox^ addTextBox;
 			// 
 			// panel9
 			// 
-			this->panel9->Controls->Add(this->Home_Panel);
 			this->panel9->Controls->Add(this->register_Panel);
 			this->panel9->Controls->Add(this->LoginPanel);
+			this->panel9->Controls->Add(this->Home_Panel);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel9->Location = System::Drawing::Point(0, 0);
 			this->panel9->Name = L"panel9";
@@ -488,6 +509,7 @@ private: System::Windows::Forms::TextBox^ addTextBox;
 			this->contactsList->Name = L"contactsList";
 			this->contactsList->Size = System::Drawing::Size(201, 334);
 			this->contactsList->TabIndex = 0;
+			this->contactsList->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::contactsList_SelectedIndexChanged);
 			// 
 			// label4
 			// 
@@ -700,54 +722,65 @@ private: System::Windows::Forms::TextBox^ addTextBox;
 			// 
 			// homeContainer_Panel
 			// 
-			this->homeContainer_Panel->Controls->Add(this->addContactPanel);
-			this->homeContainer_Panel->Controls->Add(this->sendMessage);
+			this->homeContainer_Panel->Controls->Add(this->sendMessagePanel);
 			this->homeContainer_Panel->Controls->Add(this->flowLayoutPanel1);
+			this->homeContainer_Panel->Controls->Add(this->addContactPanel);
 			this->homeContainer_Panel->Location = System::Drawing::Point(241, 116);
 			this->homeContainer_Panel->Name = L"homeContainer_Panel";
 			this->homeContainer_Panel->Size = System::Drawing::Size(612, 436);
 			this->homeContainer_Panel->TabIndex = 5;
 			// 
-			// addContactPanel
+			// sendMessagePanel
 			// 
-			this->addContactPanel->Controls->Add(this->button3);
-			this->addContactPanel->Controls->Add(this->addTextBox);
-			this->addContactPanel->Location = System::Drawing::Point(0, 0);
-			this->addContactPanel->Name = L"addContactPanel";
-			this->addContactPanel->Size = System::Drawing::Size(611, 436);
-			this->addContactPanel->TabIndex = 2;
-			this->addContactPanel->Visible = false;
+			this->sendMessagePanel->Controls->Add(this->label7);
+			this->sendMessagePanel->Controls->Add(this->label6);
+			this->sendMessagePanel->Controls->Add(this->messageReciverNameBox);
+			this->sendMessagePanel->Controls->Add(this->button2);
+			this->sendMessagePanel->Controls->Add(this->MessageContent);
+			this->sendMessagePanel->Location = System::Drawing::Point(0, 0);
+			this->sendMessagePanel->Name = L"sendMessagePanel";
+			this->sendMessagePanel->Size = System::Drawing::Size(609, 433);
+			this->sendMessagePanel->TabIndex = 1;
+			this->sendMessagePanel->Visible = false;
 			// 
-			// button3
+			// label7
 			// 
-			this->button3->Location = System::Drawing::Point(200, 161);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(144, 39);
-			this->button3->TabIndex = 1;
-			this->button3->Text = L"addButton";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click_1);
+			this->label7->AutoSize = true;
+			this->label7->BackColor = System::Drawing::Color::Transparent;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->label7->Location = System::Drawing::Point(5, 91);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(81, 18);
+			this->label7->TabIndex = 6;
+			this->label7->Text = L"Message:";
 			// 
-			// addTextBox
+			// label6
 			// 
-			this->addTextBox->Location = System::Drawing::Point(156, 56);
-			this->addTextBox->Name = L"addTextBox";
-			this->addTextBox->Size = System::Drawing::Size(260, 40);
-			this->addTextBox->TabIndex = 0;
+			this->label6->AutoSize = true;
+			this->label6->BackColor = System::Drawing::Color::Transparent;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->label6->Location = System::Drawing::Point(5, 33);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(92, 18);
+			this->label6->TabIndex = 5;
+			this->label6->Text = L"user name:";
 			// 
-			// sendMessage
+			// messageReciverNameBox
 			// 
-			this->sendMessage->Controls->Add(this->button2);
-			this->sendMessage->Controls->Add(this->MessageContent);
-			this->sendMessage->Location = System::Drawing::Point(0, 0);
-			this->sendMessage->Name = L"sendMessage";
-			this->sendMessage->Size = System::Drawing::Size(609, 433);
-			this->sendMessage->TabIndex = 1;
-			this->sendMessage->Visible = false;
+			this->messageReciverNameBox->Location = System::Drawing::Point(104, 28);
+			this->messageReciverNameBox->Name = L"messageReciverNameBox";
+			this->messageReciverNameBox->Size = System::Drawing::Size(421, 40);
+			this->messageReciverNameBox->TabIndex = 2;
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(180, 187);
+			this->button2->Location = System::Drawing::Point(232, 302);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(164, 41);
 			this->button2->TabIndex = 1;
@@ -757,21 +790,107 @@ private: System::Windows::Forms::TextBox^ addTextBox;
 			// 
 			// MessageContent
 			// 
-			this->MessageContent->Location = System::Drawing::Point(96, 48);
+			this->MessageContent->Location = System::Drawing::Point(105, 84);
 			this->MessageContent->Multiline = true;
 			this->MessageContent->Name = L"MessageContent";
-			this->MessageContent->Size = System::Drawing::Size(420, 81);
+			this->MessageContent->Size = System::Drawing::Size(420, 198);
 			this->MessageContent->TabIndex = 0;
+			this->MessageContent->TextChanged += gcnew System::EventHandler(this, &MyForm::MessageContent_TextChanged);
 			// 
 			// flowLayoutPanel1
 			// 
 			this->flowLayoutPanel1->AutoScroll = true;
 			this->flowLayoutPanel1->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->flowLayoutPanel1->BackColor = System::Drawing::Color::Transparent;
+			this->flowLayoutPanel1->Controls->Add(this->undoButtonPanel);
 			this->flowLayoutPanel1->Location = System::Drawing::Point(50, 33);
 			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
 			this->flowLayoutPanel1->Size = System::Drawing::Size(534, 373);
 			this->flowLayoutPanel1->TabIndex = 0;
 			this->flowLayoutPanel1->Visible = false;
+			// 
+			// undoButtonPanel
+			// 
+			this->undoButtonPanel->BackColor = System::Drawing::Color::Transparent;
+			this->undoButtonPanel->Controls->Add(this->undoLabel);
+			this->undoButtonPanel->Controls->Add(this->undoButton);
+			this->undoButtonPanel->Location = System::Drawing::Point(3, 3);
+			this->undoButtonPanel->Name = L"undoButtonPanel";
+			this->undoButtonPanel->Size = System::Drawing::Size(519, 63);
+			this->undoButtonPanel->TabIndex = 0;
+			// 
+			// undoLabel
+			// 
+			this->undoLabel->AutoSize = true;
+			this->undoLabel->BackColor = System::Drawing::Color::Transparent;
+			this->undoLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->undoLabel->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->undoLabel->Location = System::Drawing::Point(445, 42);
+			this->undoLabel->Name = L"undoLabel";
+			this->undoLabel->Size = System::Drawing::Size(48, 18);
+			this->undoLabel->TabIndex = 5;
+			this->undoLabel->Text = L"Undo";
+			// 
+			// undoButton
+			// 
+			this->undoButton->BackColor = System::Drawing::Color::Transparent;
+			this->undoButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"undoButton.BackgroundImage")));
+			this->undoButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->undoButton->FlatAppearance->BorderSize = 0;
+			this->undoButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->undoButton->Location = System::Drawing::Point(446, 3);
+			this->undoButton->Name = L"undoButton";
+			this->undoButton->Size = System::Drawing::Size(47, 39);
+			this->undoButton->TabIndex = 3;
+			this->undoButton->UseVisualStyleBackColor = false;
+			this->undoButton->Click += gcnew System::EventHandler(this, &MyForm::undoButton_Click);
+			// 
+			// addContactPanel
+			// 
+			this->addContactPanel->Controls->Add(this->label8);
+			this->addContactPanel->Controls->Add(this->button3);
+			this->addContactPanel->Controls->Add(this->addTextBox);
+			this->addContactPanel->Location = System::Drawing::Point(0, 0);
+			this->addContactPanel->Name = L"addContactPanel";
+			this->addContactPanel->Size = System::Drawing::Size(611, 436);
+			this->addContactPanel->TabIndex = 2;
+			this->addContactPanel->Visible = false;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->BackColor = System::Drawing::Color::Transparent;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.999999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->label8->Location = System::Drawing::Point(61, 155);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(92, 18);
+			this->label8->TabIndex = 5;
+			this->label8->Text = L"user name:";
+			// 
+			// button3
+			// 
+			this->button3->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(231, 229);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(144, 39);
+			this->button3->TabIndex = 1;
+			this->button3->Text = L"Add";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click_1);
+			// 
+			// addTextBox
+			// 
+			this->addTextBox->Location = System::Drawing::Point(175, 149);
+			this->addTextBox->Name = L"addTextBox";
+			this->addTextBox->Size = System::Drawing::Size(260, 40);
+			this->addTextBox->TabIndex = 0;
+			this->addTextBox->TextChanged += gcnew System::EventHandler(this, &MyForm::addTextBox_TextChanged);
 			// 
 			// MyForm
 			// 
@@ -797,10 +916,13 @@ private: System::Windows::Forms::TextBox^ addTextBox;
 			this->Home_Panel->PerformLayout();
 			this->contact_Panel->ResumeLayout(false);
 			this->homeContainer_Panel->ResumeLayout(false);
+			this->sendMessagePanel->ResumeLayout(false);
+			this->sendMessagePanel->PerformLayout();
+			this->flowLayoutPanel1->ResumeLayout(false);
+			this->undoButtonPanel->ResumeLayout(false);
+			this->undoButtonPanel->PerformLayout();
 			this->addContactPanel->ResumeLayout(false);
 			this->addContactPanel->PerformLayout();
-			this->sendMessage->ResumeLayout(false);
-			this->sendMessage->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -823,6 +945,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		Home_Panel->Show();
 		register_Panel->Hide();
 		LoginPanel->Hide();
+		UserNameBox->Clear();
+		PasswordBox->Clear();
+		IDBox->Clear();
+		ResgisterUserNameBox->Clear();
+		RegisterPasswordBox->Clear();
+		passwordConfirmBox->Clear();
 	}
 	else {
 		MessageBox::Show("user name or password is incorrect", "Incorret Id or pw", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
@@ -897,21 +1025,21 @@ private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^
 }
 private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
 	flowLayoutPanel1->Controls->Clear();
-	sendMessage->Hide();
+	sendMessagePanel->Hide();
 	flowLayoutPanel1->Show();
 	homeForm.uploadUserMessages();
 	for (int i = 0; i < homeForm.getLiveUser().Message.size(); i++) {
 		if(homeForm.getLiveUser().Message[i].isFavourite == true)
-		createCard(homeForm.getMessage(i).content);
+		createCard(homeForm.getMessage(i).content, homeForm.getSentMessage(i).sender);
 	}
 }
 private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	flowLayoutPanel1->Controls->Clear();
-	sendMessage->Hide();
+	sendMessagePanel->Hide();
 	flowLayoutPanel1->Show();
 	homeForm.uploadUserMessages(); // mkanha hena 3shan lma n3ml el logout
 	for (int i = 0; i < homeForm.getLiveUser().Message.size(); i++) {
-		createCard(homeForm.getMessage(i).content);
+		createCard(homeForm.getMessage(i).content, homeForm.getMessage(i).sender);
 	}
 }	
 
@@ -921,20 +1049,33 @@ private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System
 		   for (int i = 0; i < homeForm.getLiveUser().ListOfContacts.size(); i++)
 			   contactsList->Items->Add(gcnew String(homeForm.getLiveUser().ListOfContacts[i].c_str()));
 	   }
-	   void createCard(string s) {
+	   private: System::Void favouriteButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		   cout << "clicked" << endl;
+		   
+		   
+	   }
+			  int i = 0;
+	   void createCard(string s,string s1) {
 		   Panel^ messageTemplate = gcnew Panel();
 		   Label^ messageSender = gcnew Label();
 		   Label^ messageContent = gcnew Label();
+		   Button^ favouriteButton = gcnew Button();
 		   messageContent->Location = System::Drawing::Point(0, 30);
 		   messageContent->Text = gcnew String(s.c_str());
 		   messageContent->ForeColor = Color().White;
 		   messageContent->Size = System::Drawing::Size(520, 100);
 		   messageSender->Size = System::Drawing::Size(520,30);
-		   messageSender->Text = "amged";
+		   messageSender->Text = gcnew String(s1.c_str());
 		   messageSender->ForeColor = Color().White;
 		   messageTemplate->AutoSize = true;
 		   //  messageTemplate->Size = System::Drawing::Size(500, 70);
 		   messageTemplate->BackColor = Color().Gray;
+		   favouriteButton->Size = System::Drawing::Size(30, 30);
+		   favouriteButton->Location = System::Drawing::Point(430,20);
+		   favouriteButton->Text = gcnew String(System::Convert::ToString(i));
+		   i++;
+		   favouriteButton->Click += gcnew System::EventHandler(this, &MyForm::favouriteButton_Click);
+		   messageTemplate->Controls->Add(favouriteButton);
 		   messageTemplate->Controls->Add(messageSender);
 		   messageTemplate->Controls->Add(messageContent);
 		   flowLayoutPanel1->Controls->Add(messageTemplate);
@@ -951,16 +1092,18 @@ private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System
 private: System::Void button1_Click_3(System::Object^ sender, System::EventArgs^ e) {
 	flowLayoutPanel1->Hide();
 	addContactPanel->Hide();
-	sendMessage->Show();
+	sendMessagePanel->Show();
 }
 private: System::Void SentM_Button_Click(System::Object^ sender, System::EventArgs^ e) {
-	sendMessage->Hide();
+	sendMessagePanel->Hide();
 	addContactPanel->Hide();
 	flowLayoutPanel1->Controls->Clear();
 	homeForm.uploadUserSentMessages();
 	flowLayoutPanel1->Show();
-	for (int i = 0; i < homeForm.getLiveUser().sentMessages.size(); i++) {
-		createCard(homeForm.getSentMessage(i).content);
+	flowLayoutPanel1->Controls->Add(undoButtonPanel);
+
+	for (int i = homeForm.getLiveUser().sentMessages.size()-1; i >= 0 ; i--) {
+		createCard(homeForm.getSentMessage(i).content, homeForm.getSentMessage(i).sender);
 	}
 }
 	private: System::Void button2_Click_2(System::Object^ sender, System::EventArgs^ e) {
@@ -970,13 +1113,16 @@ private: System::Void SentM_Button_Click(System::Object^ sender, System::EventAr
 			tmpMessage.receiver = toStandardString(contactsList->SelectedItem->ToString());
 			tmpMessage.content = toStandardString(MessageContent->Text);
 			homeForm.sendMessage(tmpMessage);
+			messageReciverNameBox->Clear();
+			MessageContent->Clear();
+
 	}
 		catch (NullReferenceException^) {
 			MessageBox::Show("Please, Choose a contact", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 private: System::Void add_Button_Click(System::Object^ sender, System::EventArgs^ e) {
-	sendMessage->Hide();	
+	sendMessagePanel->Hide();	
 	flowLayoutPanel1->Hide();
 	addContactPanel->Show();
 }
@@ -993,9 +1139,37 @@ private: System::Void button3_Click_1(System::Object^ sender, System::EventArgs^
 	   if (!AlreadyAdded) {
 		   homeForm.addContact(toStandardString(addTextBox->Text));
 		   refreshContactList();
+		   addTextBox->Clear();
 	   }
 }
 private: System::Void logout_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+	LoginPanel->Show();
+	register_Panel->Hide();
+	Home_Panel->Hide();
+	messageReciverNameBox->Clear();
+	MessageContent->Clear();
+	addTextBox->Clear();
+	addContactPanel->Hide();
+	sendMessagePanel->Hide();
+}
+private: System::Void contactsList_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	messageReciverNameBox->Text = contactsList->SelectedItem->ToString();
+}
+private: System::Void button4_Click_1(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void undoButton_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	homeForm.deleteLastSentMessage();
+	flowLayoutPanel1->Controls->Clear();
+	flowLayoutPanel1->Controls->Add(undoButtonPanel);
+	for (int i = homeForm.getLiveUser().sentMessages.size() - 1; i >= 0; i--) {
+		createCard(homeForm.getSentMessage(i).content, homeForm.getSentMessage(i).sender);
+	}
+	homeForm.reloadUserSentMessages();
+}
+private: System::Void MessageContent_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void addTextBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
