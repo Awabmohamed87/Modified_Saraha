@@ -1050,11 +1050,18 @@ private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System
 			   contactsList->Items->Add(gcnew String(homeForm.getLiveUser().ListOfContacts[i].c_str()));
 	   }
 	   private: System::Void favouriteButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		   cout << "clicked" << endl;
+		   cout << toStandardString(sender->ToString()) << endl;
 		   
-		   
+		   for (int i = homeForm.getLiveUser().sentMessages.size()-1; i >=0 ; i--) {
+			   cout << "entered" << endl;
+			   if (sender->ToString()->Contains("btn "+i)) {
+				   cout << homeForm.getLiveUser().sentMessages[i].content << endl;
+				   homeForm.getLiveUser().sentMessages[i].isFavourite = true;
+				   break;
+			   }
+		   }
 	   }
-			  int i = 0;
+			  int i ;
 	   void createCard(string s,string s1) {
 		   Panel^ messageTemplate = gcnew Panel();
 		   Label^ messageSender = gcnew Label();
@@ -1072,8 +1079,9 @@ private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System
 		   messageTemplate->BackColor = Color().Gray;
 		   favouriteButton->Size = System::Drawing::Size(30, 30);
 		   favouriteButton->Location = System::Drawing::Point(430,20);
-		   favouriteButton->Text = gcnew String(System::Convert::ToString(i));
-		   i++;
+		   favouriteButton->Text = gcnew String("btn "+ i);
+		   i--;
+		   //System::Convert::ToString(i)i++;
 		   favouriteButton->Click += gcnew System::EventHandler(this, &MyForm::favouriteButton_Click);
 		   messageTemplate->Controls->Add(favouriteButton);
 		   messageTemplate->Controls->Add(messageSender);
@@ -1101,10 +1109,11 @@ private: System::Void SentM_Button_Click(System::Object^ sender, System::EventAr
 	homeForm.uploadUserSentMessages();
 	flowLayoutPanel1->Show();
 	flowLayoutPanel1->Controls->Add(undoButtonPanel);
-
+	i = homeForm.getLiveUser().sentMessages.size() - 1;
 	for (int i = homeForm.getLiveUser().sentMessages.size()-1; i >= 0 ; i--) {
 		createCard(homeForm.getSentMessage(i).content, homeForm.getSentMessage(i).sender);
 	}
+
 }
 	private: System::Void button2_Click_2(System::Object^ sender, System::EventArgs^ e) {
 		try {
