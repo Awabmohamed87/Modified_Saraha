@@ -194,42 +194,11 @@ void HomeForm::uploadSpecificUserRecivedMessages(string sender,  string receiver
 {
 	cout << sender <<" "<< receiver << endl;
 	specificUserRecivedMessages.clear();
-	messageReader.open("Data/sentMessages/" + sender + ".txt");
-	if (!messageReader) {
-		ofstream createTheFile("Data/sentMessages/" + sender + ".txt", ios::app);
-	}
-	else {
-
-		bool isContentRead = false;
-		string s, s0;
-
-		Messages tempMessage;
-		while (messageReader) {
-			if (!isContentRead) {
-				messageReader >> s;
-				if (s == "***") { isContentRead = true; }
-				else if (s == "-1")
-					break;
-				else
-					tempMessage.content += s;
-				tempMessage.content += " ";
-			}
-			else {
-				messageReader >> tempMessage.receiver;
-				messageReader >> tempMessage.sender;
-				messageReader >> s0;
-
-				if (s0 == "true")tempMessage.isFavourite = true;
-				else tempMessage.isFavourite = false;
-				if (tempMessage.receiver == receiver) {
-					specificUserRecivedMessages.push_back(tempMessage);
-					isContentRead = false;
-				}
-				tempMessage.content.clear();
-			}
+	for (int i = 0; i < liveuser.Message.size();i++) {
+		if (liveuser.Message[i].sender == sender) {
+			specificUserRecivedMessages.push_back(liveuser.Message[i]);
 		}
 	}
-	messageReader.close();
 }
 
 int HomeForm::getSpecificUserRecivedMessagesSize()

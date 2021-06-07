@@ -1033,16 +1033,18 @@ private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^
 	homeForm.uploadUserMessages();
 	for (int i = 0; i < homeForm.getLiveUser().Message.size(); i++) {
 		if(homeForm.getLiveUser().Message[i].isFavourite == true)
-		createCard(homeForm.getMessage(i).content, homeForm.getSentMessage(i).sender,false);
+		createCard(homeForm.getMessage(i),true);
 	}
 }
 private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	flowLayoutPanel1->Controls->Clear();
 	sendMessagePanel->Hide();
 	flowLayoutPanel1->Show();
+	i = homeForm.getLiveUser().Message.size() - 1;
 	homeForm.uploadUserMessages(); // mkanha hena 3shan lma n3ml el logout
+	cout << "pressed" << endl;
 	for (int i = 0; i < homeForm.getLiveUser().Message.size(); i++) {
-		createCard(homeForm.getMessage(i).content, homeForm.getMessage(i).sender,true);
+		createCard(homeForm.getMessage(i),true);
 	}
 }	
 
@@ -1058,27 +1060,28 @@ private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System
 		   for (int i = homeForm.getLiveUser().Message.size()-1; i >=0 ; i--) {
 			   if (sender->ToString()->Contains("btn "+i)) {
 				   cout << homeForm.getLiveUser().Message[i].content << endl;
-				   homeForm.getLiveUser().Message[i].isFavourite = true;
+				   if(homeForm.getLiveUser().Message[i].isFavourite)
+				       homeForm.getLiveUser().Message[i].isFavourite = false;
+				   else 
+					   homeForm.getLiveUser().Message[i].isFavourite = true;
+				   
 				   break;
 			   }
 		   }
 	   }
 			  int i ;
-	   void createCard(string s,string s1,bool isFaouriteNeeded) {
+	   void createCard(Messages s,bool isFaouriteNeeded) {
 		   Panel^ messageTemplate = gcnew Panel();
 		   Label^ messageSender = gcnew Label();
 		   Label^ messageContent = gcnew Label();
 		   Button^ favouriteButton = gcnew Button();
-		   ImageList^ imageList1 = gcnew ImageList;
-		   imageList1->ImageSize = System::Drawing::Size(200, 200);
-		   imageList1->Images->Add(Image::FromFile("non favourite.jpg"));
-		   imageList1->Images->Add(Image::FromFile("favourite.png"));
 		   messageContent->Location = System::Drawing::Point(0, 30);
-		   messageContent->Text = gcnew String(s.c_str());
+		   messageContent->Text = gcnew String(s.content.c_str());
 		   messageContent->ForeColor = Color().White;
 		   messageContent->Size = System::Drawing::Size(520, 100);
 		   messageSender->Size = System::Drawing::Size(520,30);
-		   messageSender->Text = gcnew String(s1.c_str());
+		   messageSender->Text = "From: ";
+		   messageSender->Text += gcnew String(s.sender.c_str());
 		   messageSender->ForeColor = Color().White;
 		   messageTemplate->AutoSize = true;
 		   //  messageTemplate->Size = System::Drawing::Size(500, 70);
@@ -1087,7 +1090,11 @@ private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System
 			   favouriteButton->Size = System::Drawing::Size(30, 30);
 			   favouriteButton->Location = System::Drawing::Point(430, 20);
 			   favouriteButton->Text = gcnew String("btn " + i);
-			   favouriteButton->BackgroundImage = Image::FromFile("non favourite.jpg");
+			   if(!s.isFavourite)
+			       favouriteButton->BackgroundImage = Image::FromFile("non favourite.jpg");
+			   else
+				   favouriteButton->BackgroundImage = Image::FromFile("favourite.png");
+
 			   favouriteButton->BackgroundImageLayout = ImageLayout::Zoom;
 			   favouriteButton->ForeColor = Color().Transparent;
 			   i--;
@@ -1123,7 +1130,7 @@ private: System::Void SentM_Button_Click(System::Object^ sender, System::EventAr
 	flowLayoutPanel1->Controls->Add(undoButtonPanel);
 	i = homeForm.getLiveUser().sentMessages.size() - 1;
 	for (int i = homeForm.getLiveUser().sentMessages.size()-1; i >= 0 ; i--) {
-		createCard(homeForm.getSentMessage(i).content, homeForm.getSentMessage(i).sender,false);
+		createCard(homeForm.getSentMessage(i),false);
 	}
 
 }
@@ -1184,7 +1191,7 @@ private: System::Void undoButton_Click(System::Object^ sender, System::EventArgs
 	flowLayoutPanel1->Controls->Clear();
 	flowLayoutPanel1->Controls->Add(undoButtonPanel);
 	for (int i = homeForm.getLiveUser().sentMessages.size() - 1; i >= 0; i--) {
-		createCard(homeForm.getSentMessage(i).content, homeForm.getSentMessage(i).sender,false);
+		createCard(homeForm.getSentMessage(i),false);
 	}
 	homeForm.reloadUserSentMessages();
 }
@@ -1198,9 +1205,8 @@ private: System::Void search_Button_Click(System::Object^ sender, System::EventA
 	flowLayoutPanel1->Show();
 	i = homeForm.getSpecificUserRecivedMessagesSize() - 1;
 	for (int i = 0; i < homeForm.getSpecificUserRecivedMessagesSize();i++) {
-
 		cout << homeForm.getSpecificUserRecivedMessages(i).content << endl;
-		createCard(homeForm.getSpecificUserRecivedMessages(i).content, homeForm.getSpecificUserRecivedMessages(i).sender, true);
+		createCard(homeForm.getSpecificUserRecivedMessages(i), true);
 	}
 }
 };
