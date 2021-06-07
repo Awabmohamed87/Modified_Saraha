@@ -29,8 +29,3 @@ string HomeForm::getMessage(Users sUser, int i)
 {
 	return sUser.Messages[i].content;
 }
-
-int HomeForm::getNumberOfMessages()
-{
-	return liveuser.Messages.size();
-}
