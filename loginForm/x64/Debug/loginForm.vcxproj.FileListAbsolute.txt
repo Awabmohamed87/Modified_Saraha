@@ -16,3 +16,6 @@ C:\Users\amgad\Documents\GitHub\Modified_Saraha\loginForm\x64\Debug\loginForm.vc
 C:\Users\Adnan Dalain\Documents\modif-saraha\GitHub\Modified_Saraha\loginForm\x64\Debug\loginForm.vcxprojAssemblyReference.cache
 C:\Users\Adnan Dalain\Documents\modif-saraha\GitHub\Modified_Saraha\loginForm\x64\Debug\loginForm.MyForm.resources
 C:\Users\Adnan Dalain\Documents\modif-saraha\GitHub\Modified_Saraha\loginForm\x64\Debug\loginForm.vcxproj.GenerateResource.cache
+F:\Modified_Saraha\loginForm\x64\Debug\loginForm.vcxprojAssemblyReference.cache
+F:\Modified_Saraha\loginForm\x64\Debug\loginForm.MyForm.resources
+F:\Modified_Saraha\loginForm\x64\Debug\loginForm.vcxproj.GenerateResource.cache

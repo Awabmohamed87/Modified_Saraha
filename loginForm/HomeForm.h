@@ -1,12 +1,24 @@
 #pragma once
 #include"Users.h"
+#include<vector>
+
 ref class HomeForm
 {
 public:
 	void setLiveUser(Users user);
 	void uploadUserMessages();
-	string getLiveUserID();
+	void uploadUserSentMessages();
+	void reloadUserSentMessages();
+	void uploadContanctsList();
+	void addContact(string s);
+	void sendMessage(Messages message);
+	string getContact(int i);
 	Users getLiveUser();
-	string getMessage(Users sUser,int i);
+	void deleteLastSentMessage();
+	Messages getMessage(int i);
+	Messages getSentMessage(int i);
+	void uploadSpecificUserRecivedMessages(string sender,string receiver);
+	int getSpecificUserRecivedMessagesSize();
+	Messages getSpecificUserRecivedMessages(int i);
 };
 

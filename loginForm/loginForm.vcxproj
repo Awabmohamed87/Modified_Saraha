@@ -25,6 +25,7 @@
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>loginForm</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>loginForm</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -122,7 +123,7 @@
   <ItemGroup>
     <ClCompile Include="HomeForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
-    <ClCompile Include="Message.cpp" />
+    <ClCompile Include="Messages.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="RegisterForm.cpp" />
     <ClCompile Include="Users.cpp" />
@@ -130,7 +131,7 @@
   <ItemGroup>
     <ClInclude Include="HomeForm.h" />
     <ClInclude Include="LoginForm.h" />
-    <ClInclude Include="Message.h" />
+    <ClInclude Include="Messages.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -140,6 +141,7 @@
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

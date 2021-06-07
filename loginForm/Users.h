@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
 #include<vector>
-#include"Message.h"
+#include<stack>
+#include"Messages.h"
 using namespace std;
 class Users
 {
@@ -9,9 +10,12 @@ public:
 	string Username;
 	string password;
 	string ID;
-	string ListOfContacts;
-	vector<Message>Messages;
-	void Checkmessages();
-	void uploadMessages(Users currentUser);
+	vector<string> ListOfContacts;
+	vector<Messages>Message;
+	vector<Messages>sentMessages;
+	stack<Messages>sentMessagesStack;
+	void loadUserInfo();
+	vector <Users> getUserInfo();
+	void deleteThatMessage();
 };
 

@@ -21,16 +21,16 @@
     <ClCompile Include="LoginForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RegisterForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Users.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HomeForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Message.cpp">
+    <ClCompile Include="RegisterForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Messages.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,16 +41,16 @@
     <ClInclude Include="LoginForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RegisterForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Users.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HomeForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Message.h">
+    <ClInclude Include="RegisterForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
