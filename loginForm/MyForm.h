@@ -1200,13 +1200,12 @@ private: System::Void MessageContent_TextChanged(System::Object^ sender, System:
 private: System::Void addTextBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void search_Button_Click(System::Object^ sender, System::EventArgs^ e) {
-	homeForm.uploadSpecificUserRecivedMessages(toStandardString(contactsList->SelectedItem->ToString()),homeForm.getLiveUser().Username);
 	flowLayoutPanel1->Controls->Clear();
 	flowLayoutPanel1->Show();
-	i = homeForm.getSpecificUserRecivedMessagesSize() - 1;
-	for (int i = 0; i < homeForm.getSpecificUserRecivedMessagesSize();i++) {
-		cout << homeForm.getSpecificUserRecivedMessages(i).content << endl;
-		createCard(homeForm.getSpecificUserRecivedMessages(i), true);
+	homeForm.getLiveUser().Message.size();
+	for (int i = 0; i < homeForm.getLiveUser().Message.size(); i++) {
+		if (homeForm.getLiveUser().Message[i].sender == toStandardString(contactsList->SelectedItem->ToString()))
+			createCard(homeForm.getMessage(i), true);
 	}
 }
 };

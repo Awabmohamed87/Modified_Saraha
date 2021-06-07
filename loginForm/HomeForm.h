@@ -17,8 +17,6 @@ public:
 	void deleteLastSentMessage();
 	Messages getMessage(int i);
 	Messages getSentMessage(int i);
-	void uploadSpecificUserRecivedMessages(string sender,string receiver);
-	int getSpecificUserRecivedMessagesSize();
-	Messages getSpecificUserRecivedMessages(int i);
+	
 };
 

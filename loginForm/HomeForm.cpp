@@ -190,24 +190,4 @@ Messages HomeForm::getSentMessage(int i)
 	return liveuser.sentMessages[i];
 }
 
-void HomeForm::uploadSpecificUserRecivedMessages(string sender,  string receiver)
-{
-	cout << sender <<" "<< receiver << endl;
-	specificUserRecivedMessages.clear();
-	for (int i = 0; i < liveuser.Message.size();i++) {
-		if (liveuser.Message[i].sender == sender) {
-			specificUserRecivedMessages.push_back(liveuser.Message[i]);
-		}
-	}
-}
-
-int HomeForm::getSpecificUserRecivedMessagesSize()
-{
-	return specificUserRecivedMessages.size();
-}
-
-Messages HomeForm::getSpecificUserRecivedMessages(int i)
-{
-	return specificUserRecivedMessages[i];
-}
 
