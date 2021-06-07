@@ -2,11 +2,13 @@
 #include"Users.h"
 #include<fstream>
 #include <cstdio>
+#include<vector>
 #include "Messages.h"
 using namespace std;
 
 static Users liveuser;
 ifstream messageReader;
+vector<Messages>specificUserRecivedMessages;
 
 void HomeForm::setLiveUser(Users user)
 {
@@ -187,3 +189,56 @@ Messages HomeForm::getSentMessage(int i)
 {
 	return liveuser.sentMessages[i];
 }
+
+void HomeForm::uploadSpecificUserRecivedMessages(string sender,  string receiver)
+{
+	cout << sender <<" "<< receiver << endl;
+	specificUserRecivedMessages.clear();
+	messageReader.open("Data/sentMessages/" + sender + ".txt");
+	if (!messageReader) {
+		ofstream createTheFile("Data/sentMessages/" + sender + ".txt", ios::app);
+	}
+	else {
+
+		bool isContentRead = false;
+		string s, s0;
+
+		Messages tempMessage;
+		while (messageReader) {
+			if (!isContentRead) {
+				messageReader >> s;
+				if (s == "***") { isContentRead = true; }
+				else if (s == "-1")
+					break;
+				else
+					tempMessage.content += s;
+				tempMessage.content += " ";
+			}
+			else {
+				messageReader >> tempMessage.receiver;
+				messageReader >> tempMessage.sender;
+				messageReader >> s0;
+
+				if (s0 == "true")tempMessage.isFavourite = true;
+				else tempMessage.isFavourite = false;
+				if (tempMessage.receiver == receiver) {
+					specificUserRecivedMessages.push_back(tempMessage);
+					isContentRead = false;
+				}
+				tempMessage.content.clear();
+			}
+		}
+	}
+	messageReader.close();
+}
+
+int HomeForm::getSpecificUserRecivedMessagesSize()
+{
+	return specificUserRecivedMessages.size();
+}
+
+Messages HomeForm::getSpecificUserRecivedMessages(int i)
+{
+	return specificUserRecivedMessages[i];
+}
+

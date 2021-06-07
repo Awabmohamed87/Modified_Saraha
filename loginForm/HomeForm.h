@@ -1,5 +1,7 @@
 #pragma once
 #include"Users.h"
+#include<vector>
+
 ref class HomeForm
 {
 public:
@@ -15,5 +17,8 @@ public:
 	void deleteLastSentMessage();
 	Messages getMessage(int i);
 	Messages getSentMessage(int i);
+	void uploadSpecificUserRecivedMessages(string sender,string receiver);
+	int getSpecificUserRecivedMessagesSize();
+	Messages getSpecificUserRecivedMessages(int i);
 };
 
