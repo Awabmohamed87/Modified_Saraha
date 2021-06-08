@@ -745,9 +745,9 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			// homeContainer_Panel
 			// 
-			this->homeContainer_Panel->Controls->Add(this->flowLayoutPanel1);
-			this->homeContainer_Panel->Controls->Add(this->sendMessagePanel);
 			this->homeContainer_Panel->Controls->Add(this->addContactPanel);
+			this->homeContainer_Panel->Controls->Add(this->sendMessagePanel);
+			this->homeContainer_Panel->Controls->Add(this->flowLayoutPanel1);
 			this->homeContainer_Panel->Location = System::Drawing::Point(241, 116);
 			this->homeContainer_Panel->Name = L"homeContainer_Panel";
 			this->homeContainer_Panel->Size = System::Drawing::Size(612, 436);
@@ -903,7 +903,7 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			this->messageReciverNameBox->Location = System::Drawing::Point(118, 95);
 			this->messageReciverNameBox->Name = L"messageReciverNameBox";
-			this->messageReciverNameBox->Size = System::Drawing::Size(421, 33);
+			this->messageReciverNameBox->Size = System::Drawing::Size(421, 32);
 			this->messageReciverNameBox->TabIndex = 2;
 			// 
 			// button2
@@ -1014,7 +1014,7 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			this->addTextBox->Location = System::Drawing::Point(197, 173);
 			this->addTextBox->Name = L"addTextBox";
-			this->addTextBox->Size = System::Drawing::Size(260, 33);
+			this->addTextBox->Size = System::Drawing::Size(260, 32);
 			this->addTextBox->TabIndex = 0;
 			this->addTextBox->TextChanged += gcnew System::EventHandler(this, &MyForm::addTextBox_TextChanged);
 			// 
@@ -1024,7 +1024,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(900, 600);
 			this->Controls->Add(this->panel9);
-			this->Font = (gcnew System::Drawing::Font(L"Ink Free", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->Font = (gcnew System::Drawing::Font(L"Asap", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ForeColor = System::Drawing::Color::DarkCyan;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -1152,6 +1152,8 @@ private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^
 private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	Environment::Exit(0);
 }
+
+
 private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
 	flowLayoutPanel1->Controls->Clear();
 	sendMessagePanel->Hide();
@@ -1162,6 +1164,8 @@ private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^
 		createCard(homeForm.getMessage(i),true);
 	}
 }
+
+
 private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	flowLayoutPanel1->Controls->Clear();
 	sendMessagePanel->Hide();
