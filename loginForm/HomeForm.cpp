@@ -87,7 +87,9 @@ void HomeForm::uploadUserMessages() {
 		while (messageReader) {
 			if (!isContentRead) {
 				messageReader >> s;
-				if (s == "***") { isContentRead = true; }
+				if (s == "***") { 
+					isContentRead = true; 
+				}
 				else if (s == "-1")
 					break;
 				else
