@@ -151,6 +151,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 private: System::Windows::Forms::PictureBox^ pictureBox2;
 private: System::Windows::Forms::PictureBox^ pictureBox3;
 private: System::Windows::Forms::Label^ label9;
+private: System::Windows::Forms::CheckBox^ makeAnonymous;
+
 
 
 
@@ -223,7 +225,15 @@ private: System::Windows::Forms::Label^ label9;
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->undoLabel = (gcnew System::Windows::Forms::Label());
 			this->undoButton = (gcnew System::Windows::Forms::Button());
+			this->addContactPanel = (gcnew System::Windows::Forms::Panel());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->addTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->sendMessagePanel = (gcnew System::Windows::Forms::Panel());
+			this->makeAnonymous = (gcnew System::Windows::Forms::CheckBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
@@ -232,13 +242,6 @@ private: System::Windows::Forms::Label^ label9;
 			this->messageReciverNameBox = (gcnew System::Windows::Forms::TextBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->MessageContent = (gcnew System::Windows::Forms::TextBox());
-			this->addContactPanel = (gcnew System::Windows::Forms::Panel());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->addTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->register_Panel->SuspendLayout();
 			this->LoginPanel->SuspendLayout();
 			this->panel9->SuspendLayout();
@@ -247,11 +250,11 @@ private: System::Windows::Forms::Label^ label9;
 			this->homeContainer_Panel->SuspendLayout();
 			this->flowLayoutPanel1->SuspendLayout();
 			this->undoButtonPanel->SuspendLayout();
-			this->sendMessagePanel->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->addContactPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->sendMessagePanel->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// UserNameBox
@@ -264,9 +267,8 @@ private: System::Windows::Forms::Label^ label9;
 			this->UserNameBox->ForeColor = System::Drawing::Color::White;
 			this->UserNameBox->Location = System::Drawing::Point(199, 181);
 			this->UserNameBox->Name = L"UserNameBox";
-			this->UserNameBox->Size = System::Drawing::Size(192, 24);
+			this->UserNameBox->Size = System::Drawing::Size(192, 30);
 			this->UserNameBox->TabIndex = 3;
-			this->UserNameBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// PasswordBox
 			// 
@@ -278,7 +280,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->PasswordBox->ForeColor = System::Drawing::Color::White;
 			this->PasswordBox->Location = System::Drawing::Point(200, 221);
 			this->PasswordBox->Name = L"PasswordBox";
-			this->PasswordBox->Size = System::Drawing::Size(191, 24);
+			this->PasswordBox->Size = System::Drawing::Size(191, 30);
 			this->PasswordBox->TabIndex = 5;
 			this->PasswordBox->UseSystemPasswordChar = true;
 			this->PasswordBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
@@ -290,7 +292,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->LoginButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(116)), static_cast<System::Int32>(static_cast<System::Byte>(147)));
 			this->LoginButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->LoginButton->Font = (gcnew System::Drawing::Font(L"Asap", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->LoginButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->LoginButton->ForeColor = System::Drawing::Color::White;
 			this->LoginButton->Location = System::Drawing::Point(235, 319);
@@ -310,7 +312,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->RegisterButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
 			this->RegisterButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Gainsboro;
 			this->RegisterButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->RegisterButton->Font = (gcnew System::Drawing::Font(L"Asap", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->RegisterButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->RegisterButton->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(87)), static_cast<System::Int32>(static_cast<System::Byte>(140)),
 				static_cast<System::Int32>(static_cast<System::Byte>(146)));
@@ -361,7 +363,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->register_Button->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(116)), static_cast<System::Int32>(static_cast<System::Byte>(147)));
 			this->register_Button->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->register_Button->Font = (gcnew System::Drawing::Font(L"Asap", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->register_Button->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->register_Button->ForeColor = System::Drawing::Color::White;
 			this->register_Button->Location = System::Drawing::Point(278, 355);
@@ -380,7 +382,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->loginPage_Button->FlatAppearance->BorderSize = 0;
 			this->loginPage_Button->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Gainsboro;
 			this->loginPage_Button->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->loginPage_Button->Font = (gcnew System::Drawing::Font(L"Asap", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->loginPage_Button->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->loginPage_Button->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(87)), static_cast<System::Int32>(static_cast<System::Byte>(140)),
 				static_cast<System::Int32>(static_cast<System::Byte>(146)));
@@ -402,7 +404,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->passwordConfirmBox->ForeColor = System::Drawing::Color::White;
 			this->passwordConfirmBox->Location = System::Drawing::Point(244, 275);
 			this->passwordConfirmBox->Name = L"passwordConfirmBox";
-			this->passwordConfirmBox->Size = System::Drawing::Size(191, 22);
+			this->passwordConfirmBox->Size = System::Drawing::Size(191, 27);
 			this->passwordConfirmBox->TabIndex = 15;
 			this->passwordConfirmBox->UseSystemPasswordChar = true;
 			// 
@@ -416,7 +418,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->RegisterPasswordBox->ForeColor = System::Drawing::Color::White;
 			this->RegisterPasswordBox->Location = System::Drawing::Point(244, 236);
 			this->RegisterPasswordBox->Name = L"RegisterPasswordBox";
-			this->RegisterPasswordBox->Size = System::Drawing::Size(184, 22);
+			this->RegisterPasswordBox->Size = System::Drawing::Size(184, 27);
 			this->RegisterPasswordBox->TabIndex = 12;
 			this->RegisterPasswordBox->UseSystemPasswordChar = true;
 			// 
@@ -430,7 +432,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->ResgisterUserNameBox->ForeColor = System::Drawing::Color::White;
 			this->ResgisterUserNameBox->Location = System::Drawing::Point(245, 198);
 			this->ResgisterUserNameBox->Name = L"ResgisterUserNameBox";
-			this->ResgisterUserNameBox->Size = System::Drawing::Size(190, 22);
+			this->ResgisterUserNameBox->Size = System::Drawing::Size(190, 27);
 			this->ResgisterUserNameBox->TabIndex = 9;
 			// 
 			// IDBox
@@ -443,7 +445,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->IDBox->ForeColor = System::Drawing::Color::White;
 			this->IDBox->Location = System::Drawing::Point(246, 159);
 			this->IDBox->Name = L"IDBox";
-			this->IDBox->Size = System::Drawing::Size(190, 22);
+			this->IDBox->Size = System::Drawing::Size(190, 27);
 			this->IDBox->TabIndex = 6;
 			// 
 			// LoginPanel
@@ -473,7 +475,6 @@ private: System::Windows::Forms::Label^ label9;
 			this->exit_Button_login->Size = System::Drawing::Size(22, 27);
 			this->exit_Button_login->TabIndex = 9;
 			this->exit_Button_login->UseVisualStyleBackColor = false;
-			this->exit_Button_login->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_1);
 			// 
 			// panel9
 			// 
@@ -523,13 +524,13 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			// ContactsList
 			// 
-			this->ContactsList->Font = (gcnew System::Drawing::Font(L"Asap", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->ContactsList->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ContactsList->FormattingEnabled = true;
-			this->ContactsList->ItemHeight = 28;
+			this->ContactsList->ItemHeight = 30;
 			this->ContactsList->Location = System::Drawing::Point(0, 0);
 			this->ContactsList->Name = L"ContactsList";
-			this->ContactsList->Size = System::Drawing::Size(201, 312);
+			this->ContactsList->Size = System::Drawing::Size(201, 304);
 			this->ContactsList->TabIndex = 0;
 			this->ContactsList->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::contactsList_SelectedIndexChanged);
 			// 
@@ -537,13 +538,13 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			this->label4->AutoSize = true;
 			this->label4->BackColor = System::Drawing::Color::Transparent;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Asap", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label4->Location = System::Drawing::Point(549, 93);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(56, 16);
+			this->label4->Size = System::Drawing::Size(78, 18);
 			this->label4->TabIndex = 4;
 			this->label4->Text = L"Favorites";
 			// 
@@ -551,13 +552,13 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			this->label5->AutoSize = true;
 			this->label5->BackColor = System::Drawing::Color::Transparent;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Asap", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label5->Location = System::Drawing::Point(638, 95);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(93, 16);
+			this->label5->Size = System::Drawing::Size(133, 18);
 			this->label5->TabIndex = 4;
 			this->label5->Text = L"Send a Message";
 			// 
@@ -565,13 +566,13 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			this->label3->AutoSize = true;
 			this->label3->BackColor = System::Drawing::Color::Transparent;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Asap", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label3->Location = System::Drawing::Point(431, 93);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(85, 16);
+			this->label3->Size = System::Drawing::Size(124, 18);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Sent Messages";
 			// 
@@ -585,7 +586,7 @@ private: System::Windows::Forms::Label^ label9;
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->IDLabel->Location = System::Drawing::Point(74, 61);
 			this->IDLabel->Name = L"IDLabel";
-			this->IDLabel->Size = System::Drawing::Size(30, 31);
+			this->IDLabel->Size = System::Drawing::Size(37, 39);
 			this->IDLabel->TabIndex = 4;
 			this->IDLabel->Text = L"2";
 			// 
@@ -593,13 +594,13 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::Color::Transparent;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Asap", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label2->Location = System::Drawing::Point(290, 93);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(109, 16);
+			this->label2->Size = System::Drawing::Size(159, 18);
 			this->label2->TabIndex = 4;
 			this->label2->Text = L"Received Messages";
 			// 
@@ -607,13 +608,13 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			this->label1->AutoSize = true;
 			this->label1->BackColor = System::Drawing::Color::Transparent;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Asap", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label1->Location = System::Drawing::Point(764, 94);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(48, 16);
+			this->label1->Size = System::Drawing::Size(63, 18);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"LogOut";
 			// 
@@ -683,6 +684,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->SentM_Button->Name = L"SentM_Button";
 			this->SentM_Button->Size = System::Drawing::Size(77, 41);
 			this->SentM_Button->TabIndex = 2;
+			this->SentM_Button->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
 			this->SentM_Button->UseVisualStyleBackColor = false;
 			this->SentM_Button->Click += gcnew System::EventHandler(this, &MyForm::SentM_Button_Click);
 			// 
@@ -741,13 +743,13 @@ private: System::Windows::Forms::Label^ label9;
 			this->exit_Button_home->Size = System::Drawing::Size(24, 32);
 			this->exit_Button_home->TabIndex = 1;
 			this->exit_Button_home->UseVisualStyleBackColor = false;
-			this->exit_Button_home->Click += gcnew System::EventHandler(this, &MyForm::button2_Click_1);
+			this->exit_Button_home->Click += gcnew System::EventHandler(this, &MyForm::exit_Button_home_Click);
 			// 
 			// homeContainer_Panel
 			// 
-			this->homeContainer_Panel->Controls->Add(this->addContactPanel);
 			this->homeContainer_Panel->Controls->Add(this->sendMessagePanel);
 			this->homeContainer_Panel->Controls->Add(this->flowLayoutPanel1);
+			this->homeContainer_Panel->Controls->Add(this->addContactPanel);
 			this->homeContainer_Panel->Location = System::Drawing::Point(241, 116);
 			this->homeContainer_Panel->Name = L"homeContainer_Panel";
 			this->homeContainer_Panel->Size = System::Drawing::Size(612, 436);
@@ -765,6 +767,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->flowLayoutPanel1->Size = System::Drawing::Size(612, 436);
 			this->flowLayoutPanel1->TabIndex = 0;
 			this->flowLayoutPanel1->Visible = false;
+			this->flowLayoutPanel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::flowLayoutPanel1_Paint);
 			// 
 			// undoButtonPanel
 			// 
@@ -781,13 +784,13 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			this->label9->AutoSize = true;
 			this->label9->BackColor = System::Drawing::Color::Transparent;
-			this->label9->Font = (gcnew System::Drawing::Font(L"AR DESTINE", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label9->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label9->Location = System::Drawing::Point(21, 13);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(192, 38);
+			this->label9->Size = System::Drawing::Size(239, 46);
 			this->label9->TabIndex = 6;
 			this->label9->Text = L"Undo Panel";
 			// 
@@ -801,9 +804,10 @@ private: System::Windows::Forms::Label^ label9;
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->undoLabel->Location = System::Drawing::Point(535, 40);
 			this->undoLabel->Name = L"undoLabel";
-			this->undoLabel->Size = System::Drawing::Size(41, 15);
+			this->undoLabel->Size = System::Drawing::Size(48, 18);
 			this->undoLabel->TabIndex = 5;
 			this->undoLabel->Text = L"Undo";
+			this->undoLabel->Click += gcnew System::EventHandler(this, &MyForm::undoLabel_Click);
 			// 
 			// undoButton
 			// 
@@ -818,119 +822,6 @@ private: System::Windows::Forms::Label^ label9;
 			this->undoButton->TabIndex = 3;
 			this->undoButton->UseVisualStyleBackColor = false;
 			this->undoButton->Click += gcnew System::EventHandler(this, &MyForm::undoButton_Click);
-			// 
-			// sendMessagePanel
-			// 
-			this->sendMessagePanel->Controls->Add(this->pictureBox3);
-			this->sendMessagePanel->Controls->Add(this->button8);
-			this->sendMessagePanel->Controls->Add(this->button7);
-			this->sendMessagePanel->Controls->Add(this->label7);
-			this->sendMessagePanel->Controls->Add(this->label6);
-			this->sendMessagePanel->Controls->Add(this->messageReciverNameBox);
-			this->sendMessagePanel->Controls->Add(this->button2);
-			this->sendMessagePanel->Controls->Add(this->MessageContent);
-			this->sendMessagePanel->Location = System::Drawing::Point(0, 0);
-			this->sendMessagePanel->Name = L"sendMessagePanel";
-			this->sendMessagePanel->Size = System::Drawing::Size(609, 433);
-			this->sendMessagePanel->TabIndex = 1;
-			this->sendMessagePanel->Visible = false;
-			// 
-			// pictureBox3
-			// 
-			this->pictureBox3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.BackgroundImage")));
-			this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox3->Location = System::Drawing::Point(525, 381);
-			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(84, 52);
-			this->pictureBox3->TabIndex = 11;
-			this->pictureBox3->TabStop = false;
-			// 
-			// button8
-			// 
-			this->button8->BackColor = System::Drawing::Color::Transparent;
-			this->button8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button8.BackgroundImage")));
-			this->button8->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->button8->FlatAppearance->BorderSize = 0;
-			this->button8->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button8->Location = System::Drawing::Point(285, 11);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(91, 73);
-			this->button8->TabIndex = 10;
-			this->button8->UseVisualStyleBackColor = false;
-			// 
-			// button7
-			// 
-			this->button7->BackColor = System::Drawing::Color::Transparent;
-			this->button7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button7.BackgroundImage")));
-			this->button7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->button7->FlatAppearance->BorderSize = 0;
-			this->button7->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button7->Location = System::Drawing::Point(22, 374);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(74, 57);
-			this->button7->TabIndex = 9;
-			this->button7->UseVisualStyleBackColor = false;
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->BackColor = System::Drawing::Color::Transparent;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Asap", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label7->Location = System::Drawing::Point(26, 157);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(69, 20);
-			this->label7->TabIndex = 6;
-			this->label7->Text = L"Message:";
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->BackColor = System::Drawing::Color::Transparent;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Asap", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label6->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label6->Location = System::Drawing::Point(19, 100);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(86, 20);
-			this->label6->TabIndex = 5;
-			this->label6->Text = L"User Name:";
-			// 
-			// messageReciverNameBox
-			// 
-			this->messageReciverNameBox->Location = System::Drawing::Point(118, 95);
-			this->messageReciverNameBox->Name = L"messageReciverNameBox";
-			this->messageReciverNameBox->Size = System::Drawing::Size(421, 32);
-			this->messageReciverNameBox->TabIndex = 2;
-			// 
-			// button2
-			// 
-			this->button2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.BackgroundImage")));
-			this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->button2->FlatAppearance->BorderSize = 0;
-			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Asap", 17.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->button2->Location = System::Drawing::Point(203, 364);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(219, 60);
-			this->button2->TabIndex = 1;
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click_2);
-			// 
-			// MessageContent
-			// 
-			this->MessageContent->Location = System::Drawing::Point(119, 151);
-			this->MessageContent->Multiline = true;
-			this->MessageContent->Name = L"MessageContent";
-			this->MessageContent->Size = System::Drawing::Size(420, 198);
-			this->MessageContent->TabIndex = 0;
-			this->MessageContent->TextChanged += gcnew System::EventHandler(this, &MyForm::MessageContent_TextChanged);
 			// 
 			// addContactPanel
 			// 
@@ -983,13 +874,13 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			this->label8->AutoSize = true;
 			this->label8->BackColor = System::Drawing::Color::Transparent;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Asap", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->label8->Location = System::Drawing::Point(95, 180);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(86, 20);
+			this->label8->Size = System::Drawing::Size(120, 24);
 			this->label8->TabIndex = 5;
 			this->label8->Text = L"User Name:";
 			// 
@@ -999,7 +890,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->button3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->button3->FlatAppearance->BorderSize = 0;
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button3->Font = (gcnew System::Drawing::Font(L"Asap", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
@@ -1014,9 +905,141 @@ private: System::Windows::Forms::Label^ label9;
 			// 
 			this->addTextBox->Location = System::Drawing::Point(197, 173);
 			this->addTextBox->Name = L"addTextBox";
-			this->addTextBox->Size = System::Drawing::Size(260, 32);
+			this->addTextBox->Size = System::Drawing::Size(260, 37);
 			this->addTextBox->TabIndex = 0;
 			this->addTextBox->TextChanged += gcnew System::EventHandler(this, &MyForm::addTextBox_TextChanged);
+			// 
+			// sendMessagePanel
+			// 
+			this->sendMessagePanel->Controls->Add(this->makeAnonymous);
+			this->sendMessagePanel->Controls->Add(this->pictureBox3);
+			this->sendMessagePanel->Controls->Add(this->button8);
+			this->sendMessagePanel->Controls->Add(this->button7);
+			this->sendMessagePanel->Controls->Add(this->label7);
+			this->sendMessagePanel->Controls->Add(this->label6);
+			this->sendMessagePanel->Controls->Add(this->messageReciverNameBox);
+			this->sendMessagePanel->Controls->Add(this->button2);
+			this->sendMessagePanel->Controls->Add(this->MessageContent);
+			this->sendMessagePanel->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->sendMessagePanel->Location = System::Drawing::Point(0, 0);
+			this->sendMessagePanel->Name = L"sendMessagePanel";
+			this->sendMessagePanel->Size = System::Drawing::Size(609, 433);
+			this->sendMessagePanel->TabIndex = 1;
+			this->sendMessagePanel->Visible = false;
+			// 
+			// makeAnonymous
+			// 
+			this->makeAnonymous->AutoSize = true;
+			this->makeAnonymous->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->makeAnonymous->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->makeAnonymous->Location = System::Drawing::Point(265, 394);
+			this->makeAnonymous->Name = L"makeAnonymous";
+			this->makeAnonymous->Size = System::Drawing::Size(171, 25);
+			this->makeAnonymous->TabIndex = 12;
+			this->makeAnonymous->Text = L"send as Anonymous";
+			this->makeAnonymous->UseVisualStyleBackColor = true;
+			this->makeAnonymous->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
+			// 
+			// pictureBox3
+			// 
+			this->pictureBox3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.BackgroundImage")));
+			this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox3->Location = System::Drawing::Point(525, 381);
+			this->pictureBox3->Name = L"pictureBox3";
+			this->pictureBox3->Size = System::Drawing::Size(84, 52);
+			this->pictureBox3->TabIndex = 11;
+			this->pictureBox3->TabStop = false;
+			// 
+			// button8
+			// 
+			this->button8->BackColor = System::Drawing::Color::Transparent;
+			this->button8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button8.BackgroundImage")));
+			this->button8->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->button8->FlatAppearance->BorderSize = 0;
+			this->button8->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button8->Location = System::Drawing::Point(286, 7);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(91, 73);
+			this->button8->TabIndex = 10;
+			this->button8->UseVisualStyleBackColor = false;
+			// 
+			// button7
+			// 
+			this->button7->BackColor = System::Drawing::Color::Transparent;
+			this->button7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button7.BackgroundImage")));
+			this->button7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->button7->FlatAppearance->BorderSize = 0;
+			this->button7->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button7->Location = System::Drawing::Point(22, 374);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(74, 57);
+			this->button7->TabIndex = 9;
+			this->button7->UseVisualStyleBackColor = false;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->BackColor = System::Drawing::Color::Transparent;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->label7->Location = System::Drawing::Point(20, 138);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(100, 24);
+			this->label7->TabIndex = 6;
+			this->label7->Text = L"Message:";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->BackColor = System::Drawing::Color::Transparent;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->label6->Location = System::Drawing::Point(4, 88);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(120, 24);
+			this->label6->TabIndex = 5;
+			this->label6->Text = L"User Name:";
+			// 
+			// messageReciverNameBox
+			// 
+			this->messageReciverNameBox->Location = System::Drawing::Point(118, 88);
+			this->messageReciverNameBox->Name = L"messageReciverNameBox";
+			this->messageReciverNameBox->Size = System::Drawing::Size(421, 37);
+			this->messageReciverNameBox->TabIndex = 2;
+			// 
+			// button2
+			// 
+			this->button2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.BackgroundImage")));
+			this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->button2->FlatAppearance->BorderSize = 0;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 17.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->button2->Location = System::Drawing::Point(217, 336);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(219, 60);
+			this->button2->TabIndex = 1;
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click_2);
+			// 
+			// MessageContent
+			// 
+			this->MessageContent->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->MessageContent->Location = System::Drawing::Point(120, 132);
+			this->MessageContent->Multiline = true;
+			this->MessageContent->Name = L"MessageContent";
+			this->MessageContent->Size = System::Drawing::Size(420, 198);
+			this->MessageContent->TabIndex = 0;
+			this->MessageContent->TextChanged += gcnew System::EventHandler(this, &MyForm::MessageContent_TextChanged);
 			// 
 			// MyForm
 			// 
@@ -1024,7 +1047,7 @@ private: System::Windows::Forms::Label^ label9;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(900, 600);
 			this->Controls->Add(this->panel9);
-			this->Font = (gcnew System::Drawing::Font(L"Asap", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ForeColor = System::Drawing::Color::DarkCyan;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -1045,13 +1068,13 @@ private: System::Windows::Forms::Label^ label9;
 			this->flowLayoutPanel1->ResumeLayout(false);
 			this->undoButtonPanel->ResumeLayout(false);
 			this->undoButtonPanel->PerformLayout();
-			this->sendMessagePanel->ResumeLayout(false);
-			this->sendMessagePanel->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			this->addContactPanel->ResumeLayout(false);
 			this->addContactPanel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			this->sendMessagePanel->ResumeLayout(false);
+			this->sendMessagePanel->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -1132,86 +1155,85 @@ private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
 	WindowState = FormWindowState::Minimized;
 }
-	   
-private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {}
-private: System::Void textBox1_TextChanged_1(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox4_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void FavouriteButton_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-	
-}
-private: System::Void FavouriteButton_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-	
-}
-private: System::Void HomePanel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
-private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	Environment::Exit(0);
-}
-private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	Environment::Exit(0);
-}
 
+	   bool isAtFavourites = false;
 
 private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
+	isAtFavourites = true;
+
 	flowLayoutPanel1->Controls->Clear();
 	sendMessagePanel->Hide();
 	flowLayoutPanel1->Show();
 	homeForm.uploadUserMessages();
-	for (int i = 0; i < homeForm.getLiveUser().Message.size(); i++) {
+	for (int i = homeForm.getLiveUser().Message.size()-1; i >=0 ; i--) {
 		if(homeForm.getLiveUser().Message[i].isFavourite == true)
-		createCard(homeForm.getMessage(i),true);
+		createCard(homeForm.getMessage(i),i,true, "not sent");
 	}
 }
 
 
 private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	isAtFavourites = false;
 	flowLayoutPanel1->Controls->Clear();
 	sendMessagePanel->Hide();
 	flowLayoutPanel1->Show();
-	i = homeForm.getLiveUser().Message.size() - 1;
-	homeForm.uploadUserMessages(); // mkanha hena 3shan lma n3ml el logout
+	homeForm.uploadUserMessages(); 
 	cout << "pressed" << endl;
-	for (int i = 0; i < homeForm.getLiveUser().Message.size(); i++) {
-		createCard(homeForm.getMessage(i),true);
+	for (int i = homeForm.getLiveUser().Message.size()-1; i >=0 ; i--) {
+		createCard(homeForm.getMessage(i),i,true,"not sent");
 	}
 }	
-
+	   void refreshMessagesPanel() {
+		   flowLayoutPanel1->Controls->Clear();
+		   sendMessagePanel->Hide();
+		   flowLayoutPanel1->Show();
+		   for (int i = homeForm.getLiveUser().Message.size() - 1; i >= 0; i--) {
+			   if (!isAtFavourites) {
+				createCard(homeForm.getMessage(i),i, true, "not sent");
+			   }
+			   else {
+				   if(homeForm.getMessage(i).isFavourite == true)
+				   createCard(homeForm.getMessage(i),i, true, "not sent");
+			   }
+		   }
+	   }
 	   void refreshContactList() {
 		   ContactsList->Items->Clear();
 		   homeForm.uploadContanctsList();
 		   for (int i = 0; i < homeForm.getLiveUser().ListOfContacts.size(); i++)
 			   ContactsList->Items->Add(gcnew String(homeForm.getLiveUser().ListOfContacts[i].c_str()));
 	   }
+	   Button^ favouriteButton;
 	   private: System::Void favouriteButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		   cout << toStandardString(sender->ToString()) << endl;
 		   
 		   for (int i = homeForm.getLiveUser().Message.size()-1; i >=0 ; i--) {
-			   if (sender->ToString()->Contains("btn "+i)) {
-				   cout << homeForm.getLiveUser().Message[i].content << endl;
-				   if(homeForm.getLiveUser().Message[i].isFavourite)
-				       homeForm.getLiveUser().Message[i].isFavourite = false;
-				   else 
-					   homeForm.getLiveUser().Message[i].isFavourite = true;
-				   
-				   break;
+			   if (sender->ToString()->Contains("     btn "+i)) {
+				   if (homeForm.getLiveUser().Message[i].isFavourite == true)
+					   homeForm.addToFavourites(i, false);
+				   else
+					   homeForm.addToFavourites(i, true);
 			   }
 		   }
+		   refreshMessagesPanel();
 	   }
-			  int i ;
-	   void createCard(Messages s,bool isFaouriteNeeded) {
+	   void createCard(Messages s,int MsgIndex,bool isFaouriteNeeded,string panel) {
 		   Panel^ messageTemplate = gcnew Panel();
 		   Label^ messageSender = gcnew Label();
 		   Label^ messageContent = gcnew Label();
-		   Button^ favouriteButton = gcnew Button();
+		   favouriteButton = gcnew Button();
 		   messageContent->Location = System::Drawing::Point(0, 30);
 		   messageContent->Text = gcnew String(s.content.c_str());
 		   messageContent->ForeColor = Color().White;
 		   messageContent->Size = System::Drawing::Size(520, 100);
 		   messageSender->Size = System::Drawing::Size(520,30);
-		   messageSender->Text = "From: ";
-		   messageSender->Text += gcnew String(s.sender.c_str());
+		   if (panel == "sent panel") {
+			   messageSender->Text = "To: ";
+			   messageSender->Text += gcnew String(s.receiver.c_str());
+		   }
+		   else {
+			   messageSender->Text = "From: ";
+			   messageSender->Text += gcnew String(s.sender.c_str());
+		   }
 		   messageSender->ForeColor = Color().White;
 		   messageTemplate->AutoSize = true;
 		   //  messageTemplate->Size = System::Drawing::Size(500, 70);
@@ -1219,15 +1241,21 @@ private: System::Void receivedM_Button_MouseClick(System::Object^ sender, System
 		   if (isFaouriteNeeded) {
 			   favouriteButton->Size = System::Drawing::Size(30, 30);
 			   favouriteButton->Location = System::Drawing::Point(430, 20);
-			   favouriteButton->Text = gcnew String("btn " + i);
-			   if(!s.isFavourite)
-			       favouriteButton->BackgroundImage = Image::FromFile("non favourite.jpg");
+			   
+			   if (!s.isFavourite)
+				   favouriteButton->BackgroundImage = System::Drawing::Image::FromFile("non favourite.jpg");
 			   else
-				   favouriteButton->BackgroundImage = Image::FromFile("favourite.png");
+				   favouriteButton->BackgroundImage = System::Drawing::Image::FromFile("favourite.png");
+
 
 			   favouriteButton->BackgroundImageLayout = ImageLayout::Zoom;
+
 			   favouriteButton->ForeColor = Color().Transparent;
-			   i--;
+			   
+			   favouriteButton->Text = gcnew String("     btn " + MsgIndex);
+			   favouriteButton->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
+			   favouriteButton->TextAlign = System::Drawing::ContentAlignment::BottomRight;
+			   
 			   
 			   favouriteButton->Click += gcnew System::EventHandler(this, &MyForm::favouriteButton_Click);
 			   messageTemplate->Controls->Add(favouriteButton);
@@ -1258,16 +1286,19 @@ private: System::Void SentM_Button_Click(System::Object^ sender, System::EventAr
 	homeForm.uploadUserSentMessages();
 	flowLayoutPanel1->Show();
 	flowLayoutPanel1->Controls->Add(undoButtonPanel);
-	i = homeForm.getLiveUser().sentMessages.size() - 1;
 	for (int i = homeForm.getLiveUser().sentMessages.size()-1; i >= 0 ; i--) {
-		createCard(homeForm.getSentMessage(i),false);
+		createCard(homeForm.getSentMessage(i),i,false,"sent panel");
 	}
 
 }
 	private: System::Void button2_Click_2(System::Object^ sender, System::EventArgs^ e) {
 		try {
 			Messages tmpMessage;
-			tmpMessage.sender = homeForm.getLiveUser().Username;
+			if(makeAnonymous->Checked)
+				tmpMessage.sender = "Anonymous";
+			else
+				tmpMessage.sender = homeForm.getLiveUser().Username;
+
 			tmpMessage.receiver = toStandardString(ContactsList->SelectedItem->ToString());
 			tmpMessage.content = toStandardString(MessageContent->Text);
 			homeForm.sendMessage(tmpMessage);
@@ -1307,6 +1338,7 @@ private: System::Void logout_Button_Click(System::Object^ sender, System::EventA
 	messageReciverNameBox->Clear();
 	MessageContent->Clear();
 	addTextBox->Clear();
+	flowLayoutPanel1->Controls->Clear();
 	addContactPanel->Hide();
 	sendMessagePanel->Hide();
 }
@@ -1317,33 +1349,41 @@ private: System::Void button4_Click_1(System::Object^ sender, System::EventArgs^
 }
 private: System::Void undoButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	homeForm.deleteLastSentMessage();
 	flowLayoutPanel1->Controls->Clear();
 	flowLayoutPanel1->Controls->Add(undoButtonPanel);
+	homeForm.undoLastMsg(); 
 	for (int i = homeForm.getLiveUser().sentMessages.size() - 1; i >= 0; i--) {
-		createCard(homeForm.getSentMessage(i),false);
+			createCard(homeForm.getLiveUser().sentMessages[i], i, false, "sent panel");
 	}
-	homeForm.reloadUserSentMessages();
 }
 private: System::Void MessageContent_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void addTextBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void search_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+	homeForm.uploadUserMessages();
 	flowLayoutPanel1->Controls->Clear();
 	flowLayoutPanel1->Show();
-	homeForm.getLiveUser().Message.size();
-	for (int i = 0; i < homeForm.getLiveUser().Message.size(); i++) {
-		if (homeForm.getLiveUser().Message[i].sender == toStandardString(ContactsList->SelectedItem->ToString()))
-			createCard(homeForm.getMessage(i), true);
+
+	try {
+		for (int i = homeForm.getLiveUser().Message.size() - 1; i >= 0; i--) {
+			if (homeForm.getLiveUser().Message[i].sender == toStandardString(ContactsList->SelectedItem->ToString())) {
+				createCard(homeForm.getMessage(i), i, true, "not sent");
+			}
+		}
+	}
+	catch (Exception^ NullReferenceException) {
+		cout << "noone there";
 	}
 }
 private: System::Void button4_Click_2(System::Object^ sender, System::EventArgs^ e) {
 	bool AlreadyAdded = false;
+	
 	for (int i = 0; i < homeForm.getLiveUser().ListOfContacts.size(); i++) {
 		if (toStandardString(addTextBox->Text) == homeForm.getLiveUser().ListOfContacts[i]) {
 			MessageBox::Show("you already have him", "Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 			AlreadyAdded = true;
+			
 			break;
 		}
 	}
@@ -1353,6 +1393,15 @@ private: System::Void button4_Click_2(System::Object^ sender, System::EventArgs^
 		refreshContactList();
 		addTextBox->Clear();
 	}
+}
+private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void exit_Button_home_Click(System::Object^ sender, System::EventArgs^ e) {
+	Environment::Exit(0);
+}
+private: System::Void flowLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
+private: System::Void undoLabel_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

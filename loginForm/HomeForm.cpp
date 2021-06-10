@@ -8,7 +8,6 @@ using namespace std;
 
 static Users liveuser;
 ifstream messageReader;
-vector<Messages>specificUserRecivedMessages;
 
 void HomeForm::setLiveUser(Users user)
 {
@@ -152,21 +151,7 @@ void HomeForm::uploadUserSentMessages()
 	messageReader.close();
 }
 
-void HomeForm::reloadUserSentMessages()
-{
-	
-	ofstream usersSentMessagesFileUpdate("Data/sentMessages/" + liveuser.Username + ".txt", ios::app);
-	cout<< liveuser.sentMessages.size() <<endl;
-	for (int i = 0; i < liveuser.Message.size();i++) {
-		usersSentMessagesFileUpdate << liveuser.sentMessages[i].content;
-		usersSentMessagesFileUpdate << "\n***\n";
-		usersSentMessagesFileUpdate << liveuser.sentMessages[i].receiver;
-		usersSentMessagesFileUpdate << " ";
-		usersSentMessagesFileUpdate << liveuser.sentMessages[i].sender;
-		usersSentMessagesFileUpdate << " false\n";
-	}
-	usersSentMessagesFileUpdate.close();
-}
+
 
 string HomeForm::getContact(int i)
 {
@@ -178,8 +163,38 @@ Users HomeForm::getLiveUser()
 	return liveuser;
 }
 
-void HomeForm::deleteLastSentMessage() {
-	liveuser.deleteThatMessage();
+void HomeForm::undoLastMsg()
+{
+	if (liveuser.sentMessages.size() > 0) {
+		ofstream updateSentMessages("Data/sentMessages/tmp.txt", ios::app);
+		liveuser.sentMessages.pop_back();
+		for (int i = 0; i < liveuser.sentMessages.size(); i++) {
+			updateSentMessages << liveuser.sentMessages[i].content << "\n***\n" << liveuser.sentMessages[i].receiver << " " << liveuser.sentMessages[i].sender << " false\n";
+		}
+		updateSentMessages.close();
+		string tmp1 = "Data/sentMessages/" + liveuser.Username + ".txt";
+		remove(tmp1.c_str());
+		rename("Data/sentMessages/tmp.txt", tmp1.c_str());
+		uploadUserSentMessages();
+	}
+}
+
+void HomeForm::addToFavourites(int msgIndex,bool msgDecision)
+{
+	ofstream UpdateFavourites("Data/Messages/tmp.txt", ios::app);
+	liveuser.Message[msgIndex].isFavourite = msgDecision;
+	for (int i = 0; i < liveuser.Message.size(); i++) {
+		UpdateFavourites << liveuser.Message[i].content << "\n***\n" << liveuser.Message[i].receiver << " " << liveuser.Message[i].sender;
+		if (liveuser.Message[i].isFavourite == true)
+			UpdateFavourites << " true\n";
+		else
+			UpdateFavourites << " false\n";
+	}
+	UpdateFavourites.close();
+	string tmp1 = "Data/Messages/" + liveuser.Username + ".txt";
+	remove(tmp1.c_str());
+	rename("Data/Messages/tmp.txt", tmp1.c_str());
+	uploadUserMessages();
 }
 
 Messages HomeForm::getMessage(int i)
