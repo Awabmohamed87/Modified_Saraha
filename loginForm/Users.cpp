@@ -30,7 +30,5 @@ vector <Users> Users::getUserInfo()
 {
     return users;
 }
-void Users::deleteThatMessage() {
-    sentMessages.erase(sentMessages.begin() + 0);
-}
+
 
